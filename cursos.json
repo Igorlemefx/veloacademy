@@ -1,60 +1,63 @@
+
 {
-  "name": "velonet-veloacademy",
-  "version": "1.0.0",
-  "description": "Plataforma completa de treinamentos corporativos com VeloNet e VeloAcademy",
-  "main": "index.html",
-  "scripts": {
-    "start": "npx serve . -p 8000",
-    "dev": "npx live-server --port=8000 --open=/",
-    "build": "echo 'Projeto estático - não requer build'",
-    "test": "echo 'Testes não implementados ainda'",
-    "lint": "echo 'Linting não configurado ainda'",
-    "serve": "npx serve . -p 8000",
-    "python": "python -m http.server 8000",
-    "php": "php -S localhost:8000"
-  },
-  "keywords": [
-    "velonet",
-    "veloacademy",
-    "treinamentos",
-    "cursos",
-    "corporativo",
-    "lms",
-    "educação",
-    "gamificação",
-    "certificados",
-    "dashboard"
-  ],
-  "author": "VeloNet Team",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/velonet/veloacademy.git"
-  },
-  "bugs": {
-    "url": "https://github.com/velonet/veloacademy/issues"
-  },
-  "homepage": "https://velonet.com.br",
-  "devDependencies": {
-    "serve": "^14.2.0",
-    "live-server": "^1.2.2"
-  },
-  "engines": {
-    "node": ">=14.0.0",
-    "npm": ">=6.0.0"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead",
-    "not ie 11"
-  ],
-  "dependencies": {},
-  "optionalDependencies": {},
-  "peerDependencies": {},
-  "bundledDependencies": [],
-  "config": {
-    "port": 8000,
-    "host": "localhost"
-  }
+    "cs004": {
+        "title": "Segurança da Informação para Colaboradores",
+        "description": "Aprenda a proteger os dados da empresa e dos clientes contra ameaças digitais.",
+        "isFeatured": true,
+        "modules": [
+            {
+                "title": "Módulo 1: Conceitos Fundamentais",
+                "lessons": [
+                    { "id": "l7-1", "title": "O que é Segurança da Informação?", "type": "video", "duration": "10 min", "filePath": "https://drive.google.com/file/d/1Svw_vrH7zKOKfZgxzJo8VUbdX-4P8yMq/view?usp=drive_link", "xp": 15 },
+                    { "id": "l7-2", "title": "Tipos de Ameaças (Phishing, Malware)", "type": "audio", "duration": "15 min", "filePath": "https://drive.google.com/file/d/1muXEPK8hd-HxrftBL2nBoAagHxJuXd_D/view?usp=drive_link", "xp": 20 },
+                    { "id": "l7-3", "title": "Política de Senhas Seguras", "type": "pdf", "duration": "Leitura", "filePath": "https://drive.google.com/file/d/1JaTpyGK4FA_J-xoAv7YJ3m5ux-aIGIaL/view?usp=drive_link", "xp": 10 }
+                ]
+            },
+            {
+                "title": "Módulo 2: Boas Práticas no Dia a Dia",
+                "lessons": [
+                    { "id": "l8-1", "title": "Navegação Segura e E-mails Confiáveis", "type": "video", "duration": "12 min", "filePath": "https://drive.google.com/file/d/1orO6E8vXH70V8Z-Pd3hj-YKmVpadDu3d/view?usp=drive_link", "xp": 20 },
+                    { "id": "l8-2", "title": "Protegendo seu Ambiente de Trabalho", "type": "pdf", "duration": "Leitura", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_PDF_AQUI", "xp": 15 },
+                    { "id": "l8-3", "title": "O que fazer em caso de incidente?", "type": "audio", "duration": "10 min", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_AUDIO_AQUI", "xp": 20 }
+                ]
+            }
+        ]
+    },
+    "cs003": {
+        "title": "Excelência no Atendimento ao Cliente",
+        "description": "Transforme cada interação em uma oportunidade de encantar e fidelizar clientes.",
+        "isFeatured": false,
+        "modules": [
+            {
+                "title": "Módulo 1: A Mentalidade do Atendimento de Elite",
+                "lessons": [
+                    { "id": "l4-1", "title": "Comunicação Empática", "type": "audio", "duration": "18 min", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_AUDIO_AQUI", "xp": 25 },
+                    { "id": "l4-2", "title": "Linguagem Positiva e Eficaz", "type": "video", "duration": "12 min", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_VIDEO_AQUI", "xp": 20 },
+                    { "id": "l4-3", "title": "Guia Rápido de Tom de Voz", "type": "pdf", "duration": "Leitura", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_PDF_AQUI", "xp": 15 }
+                ]
+            },
+            {
+                "title": "Módulo 2: Lidando com Situações Desafiadoras",
+                "lessons": [
+                    { "id": "l5-1", "title": "Técnicas de Resolução de Conflitos", "type": "video", "duration": "22 min", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_VIDEO_AQUI", "xp": 30 },
+                    { "id": "l5-2", "title": "Como Lidar com Clientes Irritados", "type": "audio", "duration": "20 min", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_AUDIO_AQUI", "xp": 25 },
+                    { "id": "l5-3", "title": "Dizendo \"Não\" com Profissionalismo", "type": "video", "duration": "10 min", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_VIDEO_AQUI", "xp": 20 }
+                ]
+            }
+        ]
+    },
+    "cs001": {
+        "title": "Onboarding de Atendimento VeloTax",
+        "description": "Aprenda os processos essenciais para um atendimento de excelência.",
+        "isFeatured": false,
+        "modules": [
+            {
+                "title": "Módulo 1: Fundamentos",
+                "lessons": [
+                    { "id": "l1-1", "title": "Boas-vindas e Introdução", "type": "video", "duration": "5 min", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_VIDEO_AQUI", "xp": 10 },
+                    { "id": "l1-2", "title": "Guia de Processos Iniciais", "type": "pdf", "duration": "Leitura", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_PDF_AQUI", "xp": 15 }
+                ]
+            }
+        ]
+    }
 }
