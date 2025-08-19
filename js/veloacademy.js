@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeloAcademy - Sistema de Treinamento Corporativo</title>
+    <title>VeloAcademy Pro - Sistema Avançado de Treinamento Corporativo</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -94,6 +94,31 @@
 
     <!-- Container de Notificações -->
     <div id="notification-container" class="fixed top-5 right-5 z-50 space-y-3"></div>
+    
+    <!-- Sistema de Login/Registro -->
+    <div id="auth-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center">
+        <div class="glass-panel p-8 max-w-md w-full m-4">
+            <div id="login-form" class="space-y-4">
+                <h2 class="text-2xl font-bold text-center mb-6">Acesso VeloAcademy</h2>
+                <input type="text" id="login-email" placeholder="Email" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                <input type="password" id="login-password" placeholder="Senha" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                <button onclick="veloAcademyApp.login()" class="btn btn-primary w-full">Entrar</button>
+                <p class="text-center text-sm">
+                    <a href="#" onclick="veloAcademyApp.showRegisterForm()" class="text-blue-400 hover:underline">Criar conta</a>
+                </p>
+            </div>
+            <div id="register-form" class="space-y-4 hidden">
+                <h2 class="text-2xl font-bold text-center mb-6">Nova Conta</h2>
+                <input type="text" id="register-name" placeholder="Nome completo" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                <input type="email" id="register-email" placeholder="Email" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                <input type="password" id="register-password" placeholder="Senha" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                <button onclick="veloAcademyApp.register()" class="btn btn-primary w-full">Criar Conta</button>
+                <p class="text-center text-sm">
+                    <a href="#" onclick="veloAcademyApp.showLoginForm()" class="text-blue-400 hover:underline">Já tenho conta</a>
+                </p>
+            </div>
+        </div>
+    </div>
 
     <!-- Cabeçalho Principal da Aplicação -->
     <header class="flex flex-wrap justify-between items-center mb-8 pb-4 border-b border-gray-800 gap-4">
@@ -119,13 +144,20 @@
                     <div id="xp-fill" class="xp-fill" style="width: 0%;"></div>
                 </div>
             </div>
-            <div class="flex items-center space-x-3">
-                <div class="text-right">
-                    <p id="user-name" class="font-semibold">Usuário Demo</p>
-                    <p id="user-title" class="text-sm" style="color: #1634FF;">Aprendiz</p>
-                </div>
-                <img src="https://i.pravatar.cc/150?u=demo" alt="Avatar" class="w-12 h-12 rounded-full border-2" style="border-color: #1634FF;">
-            </div>
+                         <div class="flex items-center space-x-3">
+                 <div class="text-right">
+                     <p id="user-name" class="font-semibold">Usuário Demo</p>
+                     <p id="user-title" class="text-sm" style="color: #1634FF;">Aprendiz</p>
+                 </div>
+                 <img id="user-avatar" src="https://i.pravatar.cc/150?u=demo" alt="Avatar" class="w-12 h-12 rounded-full border-2 cursor-pointer hover:scale-110 transition-transform" style="border-color: #1634FF;" onclick="veloAcademyApp.showUserMenu()">
+                 <div id="user-menu" class="absolute top-20 right-4 glass-panel p-4 hidden">
+                     <div class="space-y-2">
+                         <button onclick="veloAcademyApp.showProfile()" class="w-full text-left p-2 hover:bg-white/10 rounded">👤 Perfil</button>
+                         <button onclick="veloAcademyApp.showSettings()" class="w-full text-left p-2 hover:bg-white/10 rounded">⚙️ Configurações</button>
+                         <button onclick="veloAcademyApp.logout()" class="w-full text-left p-2 hover:bg-white/10 rounded text-red-400">🚪 Sair</button>
+                     </div>
+                 </div>
+             </div>
         </div>
     </header>
 
@@ -278,23 +310,30 @@
     };
 
     // --- NÚCLEO DA APLICAÇÃO ---
-    const veloAcademyApp = {
-        userData: {
-            name: 'Usuário Demo',
-            level: 1,
-            xp: 0,
-            title: 'Aprendiz',
-            lastCourse: null,
-            progress: {},
-            achievements: {},
-            theme: 'dark' // Adicionado o tema aos dados do usuário
-        },
+         const veloAcademyApp = {
+         userData: {
+             name: 'Usuário Demo',
+             email: '',
+             level: 1,
+             xp: 0,
+             title: 'Aprendiz',
+             lastCourse: null,
+             progress: {},
+             achievements: {},
+             theme: 'dark',
+             avatar: 'https://i.pravatar.cc/150?u=demo',
+             joinDate: new Date().toISOString(),
+             totalStudyTime: 0,
+             certificates: []
+         },
         
-        init() {
-            this.loadData();
-            this.applyTheme(); // Aplicar o tema ao iniciar
-            this.renderDashboard();
-        },
+                 init() {
+             this.loadData();
+             this.applyTheme();
+             this.checkAuth();
+             this.startStudyTimer();
+             this.renderDashboard();
+         },
 
         loadData() {
             const savedData = localStorage.getItem('veloAcademyUserData');
@@ -667,24 +706,185 @@
             return totalLessons === 0 ? 0 : (completedLessons / totalLessons) * 100;
         },
 
-        showNotification(title, message, type = 'info') {
-            const container = document.getElementById('notification-container');
-            const icons = { info: 'fas fa-info-circle', success: 'fas fa-check-circle', xp: 'fas fa-star', 'level-up': 'fas fa-arrow-up', achievement: 'fas fa-trophy' };
-            const colors = { 
-                info: '#000058', 
-                success: '#1DFDB9', 
-                xp: '#FF8400', 
-                'level-up': '#791DD0', 
-                achievement: '#FF00D7' 
-            };
-            
-            const notif = document.createElement('div');
-            notif.style.borderLeftColor = colors[type];
-            notif.className = `toast-notification glass-panel p-4 rounded-lg shadow-lg border-l-4 w-80`;
-            notif.innerHTML = `<div class="flex items-start space-x-3"><i class="${icons[type]} text-xl mt-1" style="color: ${colors[type]};"></i><div><p class="font-bold">${title}</p><p class="text-sm text-gray-300">${message}</p></div></div>`;
-            container.appendChild(notif);
-            setTimeout(() => notif.remove(), 5000);
-        }
+                 showNotification(title, message, type = 'info') {
+             const container = document.getElementById('notification-container');
+             const icons = { info: 'fas fa-info-circle', success: 'fas fa-check-circle', xp: 'fas fa-star', 'level-up': 'fas fa-arrow-up', achievement: 'fas fa-trophy' };
+             const colors = { 
+                 info: '#000058', 
+                 success: '#1DFDB9', 
+                 xp: '#FF8400', 
+                 'level-up': '#791DD0', 
+                 achievement: '#FF00D7' 
+             };
+             
+             const notif = document.createElement('div');
+             notif.style.borderLeftColor = colors[type];
+             notif.className = `toast-notification glass-panel p-4 rounded-lg shadow-lg border-l-4 w-80`;
+             notif.innerHTML = `<div class="flex items-start space-x-3"><i class="${icons[type]} text-xl mt-1" style="color: ${colors[type]};"></i><div><p class="font-bold">${title}</p><p class="text-sm text-gray-300">${message}</p></div></div>`;
+             container.appendChild(notif);
+             setTimeout(() => notif.remove(), 5000);
+         },
+
+         // === NOVAS FUNCIONALIDADES AVANÇADAS ===
+         
+         checkAuth() {
+             if (!this.userData.email) {
+                 this.showAuthModal();
+             }
+         },
+
+         showAuthModal() {
+             document.getElementById('auth-modal').classList.remove('hidden');
+             document.getElementById('auth-modal').classList.add('flex');
+         },
+
+         hideAuthModal() {
+             document.getElementById('auth-modal').classList.add('hidden');
+             document.getElementById('auth-modal').classList.remove('flex');
+         },
+
+         showLoginForm() {
+             document.getElementById('login-form').classList.remove('hidden');
+             document.getElementById('register-form').classList.add('hidden');
+         },
+
+         showRegisterForm() {
+             document.getElementById('login-form').classList.add('hidden');
+             document.getElementById('register-form').classList.remove('hidden');
+         },
+
+         login() {
+             const email = document.getElementById('login-email').value;
+             const password = document.getElementById('login-password').value;
+             
+             if (email && password) {
+                 this.userData.email = email;
+                 this.userData.name = email.split('@')[0];
+                 this.saveData();
+                 this.hideAuthModal();
+                 this.showNotification('Bem-vindo!', 'Login realizado com sucesso!', 'success');
+                 this.renderDashboard();
+             } else {
+                 this.showNotification('Erro', 'Preencha todos os campos!', 'info');
+             }
+         },
+
+         register() {
+             const name = document.getElementById('register-name').value;
+             const email = document.getElementById('register-email').value;
+             const password = document.getElementById('register-password').value;
+             
+             if (name && email && password) {
+                 this.userData.name = name;
+                 this.userData.email = email;
+                 this.userData.joinDate = new Date().toISOString();
+                 this.saveData();
+                 this.hideAuthModal();
+                 this.showNotification('Conta criada!', 'Bem-vindo à VeloAcademy!', 'success');
+                 this.renderDashboard();
+             } else {
+                 this.showNotification('Erro', 'Preencha todos os campos!', 'info');
+             }
+         },
+
+         logout() {
+             this.userData = {
+                 name: 'Usuário Demo',
+                 email: '',
+                 level: 1,
+                 xp: 0,
+                 title: 'Aprendiz',
+                 lastCourse: null,
+                 progress: {},
+                 achievements: {},
+                 theme: 'dark',
+                 avatar: 'https://i.pravatar.cc/150?u=demo',
+                 joinDate: new Date().toISOString(),
+                 totalStudyTime: 0,
+                 certificates: []
+             };
+             this.saveData();
+             this.showAuthModal();
+             this.showNotification('Logout', 'Você saiu da conta!', 'info');
+         },
+
+         showUserMenu() {
+             const menu = document.getElementById('user-menu');
+             menu.classList.toggle('hidden');
+         },
+
+         showProfile() {
+             this.showNotification('Perfil', 'Funcionalidade em desenvolvimento!', 'info');
+         },
+
+         showSettings() {
+             this.showNotification('Configurações', 'Funcionalidade em desenvolvimento!', 'info');
+         },
+
+         startStudyTimer() {
+             setInterval(() => {
+                 if (this.userData.lastCourse) {
+                     this.userData.totalStudyTime += 1;
+                     this.saveData();
+                 }
+             }, 60000); // 1 minuto
+         },
+
+         generateCertificate(courseId) {
+             const course = courseDatabase[courseId];
+             const certificate = {
+                 id: `cert_${Date.now()}`,
+                 courseId: courseId,
+                 courseName: course.title,
+                 userName: this.userData.name,
+                 issueDate: new Date().toISOString(),
+                 certificateNumber: `VELO-${Date.now().toString().slice(-6)}`
+             };
+             
+             this.userData.certificates.push(certificate);
+             this.saveData();
+             
+             // Gerar PDF do certificado
+             this.downloadCertificate(certificate);
+         },
+
+         downloadCertificate(certificate) {
+             const content = `
+                 <html>
+                 <head>
+                     <title>Certificado VeloAcademy</title>
+                     <style>
+                         body { font-family: Arial, sans-serif; text-align: center; padding: 40px; }
+                         .certificate { border: 3px solid #1634FF; padding: 40px; max-width: 800px; margin: 0 auto; }
+                         .logo { font-size: 48px; color: #1634FF; margin-bottom: 20px; }
+                         .title { font-size: 36px; color: #000058; margin-bottom: 30px; }
+                         .name { font-size: 28px; color: #1634FF; margin-bottom: 20px; }
+                         .course { font-size: 24px; color: #272A30; margin-bottom: 30px; }
+                         .date { font-size: 18px; color: #666; }
+                         .number { font-size: 14px; color: #999; margin-top: 20px; }
+                     </style>
+                 </head>
+                 <body>
+                     <div class="certificate">
+                         <div class="logo">🎓</div>
+                         <div class="title">Certificado de Conclusão</div>
+                         <div class="name">${certificate.userName}</div>
+                         <div class="course">${certificate.courseName}</div>
+                         <div class="date">Concluído em: ${new Date(certificate.issueDate).toLocaleDateString('pt-BR')}</div>
+                         <div class="number">Número: ${certificate.certificateNumber}</div>
+                     </div>
+                 </body>
+                 </html>
+             `;
+             
+             const blob = new Blob([content], { type: 'text/html' });
+             const url = URL.createObjectURL(blob);
+             const a = document.createElement('a');
+             a.href = url;
+             a.download = `certificado_${certificate.courseName.replace(/\s+/g, '_')}.html`;
+             a.click();
+             URL.revokeObjectURL(url);
+         }
     };
 
     veloAcademyApp.init();
