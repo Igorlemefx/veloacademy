@@ -1,4 +1,3 @@
-
 {
     "cs004": {
         "title": "Segurança da Informação para Colaboradores",
@@ -8,15 +7,15 @@
             {
                 "title": "Módulo 1: Conceitos Fundamentais",
                 "lessons": [
-                    { "id": "l7-1", "title": "O que é Segurança da Informação?", "type": "video", "duration": "10 min", "filePath": "https://drive.google.com/file/d/1Svw_vrH7zKOKfZgxzJo8VUbdX-4P8yMq/view?usp=drive_link", "xp": 15 },
-                    { "id": "l7-2", "title": "Tipos de Ameaças (Phishing, Malware)", "type": "audio", "duration": "15 min", "filePath": "https://drive.google.com/file/d/1muXEPK8hd-HxrftBL2nBoAagHxJuXd_D/view?usp=drive_link", "xp": 20 },
-                    { "id": "l7-3", "title": "Política de Senhas Seguras", "type": "pdf", "duration": "Leitura", "filePath": "https://drive.google.com/file/d/1JaTpyGK4FA_J-xoAv7YJ3m5ux-aIGIaL/view?usp=drive_link", "xp": 10 }
+                    { "id": "l7-1", "title": "O que é Segurança da Informação?", "type": "video", "duration": "10 min", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_VIDEO_AQUI", "xp": 15 },
+                    { "id": "l7-2", "title": "Tipos de Ameaças (Phishing, Malware)", "type": "audio", "duration": "15 min", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_AUDIO_AQUI", "xp": 20 },
+                    { "id": "l7-3", "title": "Política de Senhas Seguras", "type": "pdf", "duration": "Leitura", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_PDF_AQUI", "xp": 10 }
                 ]
             },
             {
                 "title": "Módulo 2: Boas Práticas no Dia a Dia",
                 "lessons": [
-                    { "id": "l8-1", "title": "Navegação Segura e E-mails Confiáveis", "type": "video", "duration": "12 min", "filePath": "https://drive.google.com/file/d/1orO6E8vXH70V8Z-Pd3hj-YKmVpadDu3d/view?usp=drive_link", "xp": 20 },
+                    { "id": "l8-1", "title": "Navegação Segura e E-mails Confiáveis", "type": "video", "duration": "12 min", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_VIDEO_AQUI", "xp": 20 },
                     { "id": "l8-2", "title": "Protegendo seu Ambiente de Trabalho", "type": "pdf", "duration": "Leitura", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_PDF_AQUI", "xp": 15 },
                     { "id": "l8-3", "title": "O que fazer em caso de incidente?", "type": "audio", "duration": "10 min", "filePath": "https://drive.google.com/uc?export=view&id=ID_DO_SEU_AUDIO_AQUI", "xp": 20 }
                 ]
