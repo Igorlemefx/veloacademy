@@ -1,0 +1,60 @@
+{
+  "name": "velonet-veloacademy",
+  "version": "1.0.0",
+  "description": "Plataforma completa de treinamentos corporativos com VeloNet e VeloAcademy",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve . -p 8000",
+    "dev": "npx live-server --port=8000 --open=/",
+    "build": "echo 'Projeto estático - não requer build'",
+    "test": "echo 'Testes não implementados ainda'",
+    "lint": "echo 'Linting não configurado ainda'",
+    "serve": "npx serve . -p 8000",
+    "python": "python -m http.server 8000",
+    "php": "php -S localhost:8000"
+  },
+  "keywords": [
+    "velonet",
+    "veloacademy",
+    "treinamentos",
+    "cursos",
+    "corporativo",
+    "lms",
+    "educação",
+    "gamificação",
+    "certificados",
+    "dashboard"
+  ],
+  "author": "VeloNet Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/velonet/veloacademy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/velonet/veloacademy/issues"
+  },
+  "homepage": "https://velonet.com.br",
+  "devDependencies": {
+    "serve": "^14.2.0",
+    "live-server": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "dependencies": {},
+  "optionalDependencies": {},
+  "peerDependencies": {},
+  "bundledDependencies": [],
+  "config": {
+    "port": 8000,
+    "host": "localhost"
+  }
+}
