@@ -55,6 +55,35 @@
         .theme-light .btn-secondary { background: rgba(0, 0, 0, 0.05); border-color: rgba(0, 0, 0, 0.1); }
         .btn-secondary:hover { background: rgba(255, 255, 255, 0.2); }
         .theme-light .btn-secondary:hover { background: rgba(0, 0, 0, 0.1); }
+        
+        /* Estilos específicos para o botão de tema */
+        #theme-switcher {
+            background: rgba(22, 52, 255, 0.15) !important;
+            border: 2px solid #1634FF !important;
+            color: #1634FF !important;
+            box-shadow: 0 4px 12px rgba(22, 52, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        #theme-switcher:hover {
+            background: rgba(22, 52, 255, 0.25) !important;
+            border-color: #1DFDB9 !important;
+            color: #1DFDB9 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(22, 52, 255, 0.4);
+        }
+        
+        .theme-light #theme-switcher {
+            background: rgba(22, 52, 255, 0.1) !important;
+            border-color: #1634FF !important;
+            color: #1634FF !important;
+        }
+        
+        .theme-light #theme-switcher:hover {
+            background: rgba(22, 52, 255, 0.2) !important;
+            border-color: #1DFDB9 !important;
+            color: #1DFDB9 !important;
+        }
 
         .btn-danger { background: #FF3B30; color: white; }
         
@@ -132,7 +161,7 @@
             </div>
         </div>
         <div class="flex items-center space-x-4">
-            <button id="theme-switcher" onclick="veloAcademyApp.toggleTheme()" class="btn btn-secondary p-2 h-12 w-12 flex items-center justify-center text-xl">
+            <button id="theme-switcher" onclick="veloAcademyApp.toggleTheme()" class="btn btn-secondary p-2 h-12 w-12 flex items-center justify-center text-xl border-2 border-blue-400 hover:border-blue-300 transition-all duration-300" style="background: rgba(22, 52, 255, 0.1); color: #1634FF;">
                 <i class="fas fa-sun"></i>
             </button>
             <div class="flex-grow">
