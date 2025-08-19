@@ -318,8 +318,24 @@
 </head>
 <body class="p-4 sm:p-8">
 
-    <!-- Container de Notificações -->
+    <!-- Container de Notificações Inteligentes -->
     <div id="notification-container" class="fixed top-5 right-5 z-50 space-y-3"></div>
+    
+    <!-- Sistema de Notificações Toast Avançado -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 space-y-3"></div>
+    
+    <!-- Sistema de Notificações Push -->
+    <div id="push-notification" class="fixed top-0 left-0 right-0 bg-gradient-to-r from-blue-600 to-purple-600 text-white p-4 transform -translate-y-full transition-transform duration-500 z-50">
+        <div class="flex items-center justify-between max-w-4xl mx-auto">
+            <div class="flex items-center space-x-3">
+                <i class="fas fa-bell text-xl"></i>
+                <span class="font-semibold">Nova notificação</span>
+            </div>
+            <button onclick="veloAcademyApp.hidePushNotification()" class="text-white hover:text-gray-200">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
     
     <!-- Sistema de Login/Registro -->
     <div id="auth-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center">
@@ -397,6 +413,95 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2">
+                    <!-- Dashboard Interativo com Gráficos -->
+                    <div class="glass-panel p-6 mb-8">
+                        <h3 class="text-xl font-bold mb-4" style="color: var(--primary-accent);">
+                            <i class="fas fa-chart-line mr-2"></i>Dashboard Interativo
+                        </h3>
+                        
+                        <!-- Métricas de Desempenho -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                            <div class="text-center p-4 rounded-lg" style="background: rgba(29, 253, 185, 0.1); border: 2px solid var(--success-green);">
+                                <div class="text-3xl font-bold mb-2" style="color: var(--success-green);">
+                                    <span id="efficiency-score">0</span>%
+                                </div>
+                                <div class="text-sm text-gray-400">Eficiência de Estudo</div>
+                            </div>
+                            
+                            <div class="text-center p-4 rounded-lg" style="background: rgba(22, 52, 255, 0.1); border: 2px solid var(--primary-accent);">
+                                <div class="text-3xl font-bold mb-2" style="color: var(--primary-accent);">
+                                    <span id="streak-days">0</span>
+                                </div>
+                                <div class="text-sm text-gray-400">Dias Consecutivos</div>
+                            </div>
+                            
+                            <div class="text-center p-4 rounded-lg" style="background: rgba(255, 132, 0, 0.1); border: 2px solid var(--warning-orange);">
+                                <div class="text-3xl font-bold mb-2" style="color: var(--warning-orange);">
+                                    <span id="weekly-goals">0</span>/5
+                                </div>
+                                <div class="text-sm text-gray-400">Metas Semanais</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Gráfico de Progresso Semanal -->
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold mb-3" style="color: var(--text-primary);">Progresso Semanal</h4>
+                            <div class="flex items-end space-x-2 h-32">
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="bg-gradient-to-t from-blue-500 to-purple-500 rounded-t w-full transition-all duration-500" id="day-1" style="height: 0%;"></div>
+                                    <span class="text-xs text-gray-400 mt-2">Seg</span>
+                                </div>
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="bg-gradient-to-t from-blue-500 to-purple-500 rounded-t w-full transition-all duration-500" id="day-2" style="height: 0%;"></div>
+                                    <span class="text-xs text-gray-400 mt-2">Ter</span>
+                                </div>
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="bg-gradient-to-t from-blue-500 to-purple-500 rounded-t w-full transition-all duration-500" id="day-3" style="height: 0%;"></div>
+                                    <span class="text-xs text-gray-400 mt-2">Qua</span>
+                                </div>
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="bg-gradient-to-t from-blue-500 to-purple-500 rounded-t w-full transition-all duration-500" id="day-4" style="height: 0%;"></div>
+                                    <span class="text-xs text-gray-400 mt-2">Qui</span>
+                                </div>
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="bg-gradient-to-t from-blue-500 to-purple-500 rounded-t w-full transition-all duration-500" id="day-5" style="height: 0%;"></div>
+                                    <span class="text-xs text-gray-400 mt-2">Sex</span>
+                                </div>
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="bg-gradient-to-t from-blue-500 to-purple-500 rounded-t w-full transition-all duration-500" id="day-6" style="height: 0%;"></div>
+                                    <span class="text-xs text-gray-400 mt-2">Sáb</span>
+                                </div>
+                                <div class="flex-1 flex flex-col items-center">
+                                    <div class="bg-gradient-to-t from-blue-500 to-purple-500 rounded-t w-full transition-all duration-500" id="day-7" style="height: 0%;"></div>
+                                    <span class="text-xs text-gray-400 mt-2">Dom</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Insights e Recomendações -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 rounded-lg" style="background: rgba(29, 253, 185, 0.05); border: 1px solid var(--success-green);">
+                                <h5 class="font-semibold mb-2" style="color: var(--success-green);">
+                                    <i class="fas fa-lightbulb mr-2"></i>Insight do Dia
+                                </h5>
+                                <p class="text-sm text-gray-400" id="daily-insight">
+                                    Continue assim! Você está no caminho certo para alcançar seus objetivos.
+                                </p>
+                            </div>
+                            
+                            <div class="p-4 rounded-lg" style="background: rgba(22, 52, 255, 0.05); border: 1px solid var(--primary-accent);">
+                                <h5 class="font-semibold mb-2" style="color: var(--primary-accent);">
+                                    <i class="fas fa-target mr-2"></i>Próxima Meta
+                                </h5>
+                                <p class="text-sm text-gray-400" id="next-goal">
+                                    Complete 3 aulas hoje para manter sua sequência de estudos.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2">
                     <!-- Estatísticas -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
                         <div class="glass-panel p-4 flex items-center space-x-4 stats-card courses hover-lift">
@@ -453,6 +558,176 @@
 
         <!-- View: Visualizador de Curso Detalhado -->
         <div id="course-view" class="view"></div>
+
+        <!-- View: Gerenciador de Conteúdo -->
+        <div id="content-manager-view" class="view">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-center justify-between mb-8">
+                    <h1 class="text-3xl font-bold" style="color: var(--primary-accent);">
+                        <i class="fas fa-plus-circle mr-3"></i>Gerenciador de Conteúdo
+                    </h1>
+                    <button onclick="veloAcademyApp.showAddContentModal()" class="btn btn-primary">
+                        <i class="fas fa-plus mr-2"></i>Adicionar Conteúdo
+                    </button>
+                </div>
+                
+                <!-- Filtros e Busca -->
+                <div class="glass-panel p-4 mb-6">
+                    <div class="flex flex-wrap items-center gap-4">
+                        <div class="flex-1 min-w-64">
+                            <input type="text" id="content-search" placeholder="Buscar conteúdo..." class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                        </div>
+                        <select id="content-filter" class="p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                            <option value="all">Todos os Tipos</option>
+                            <option value="video">Vídeos</option>
+                            <option value="pdf">PDFs</option>
+                            <option value="audio">Áudios</option>
+                        </select>
+                        <button onclick="veloAcademyApp.filterContent()" class="btn btn-secondary">
+                            <i class="fas fa-filter mr-2"></i>Filtrar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Lista de Conteúdo -->
+                <div id="content-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Conteúdo será carregado dinamicamente -->
+                </div>
+            </div>
+        </div>
+
+        <!-- View: Certificados -->
+        <div id="certificates-view" class="view">
+            <div class="max-w-6xl mx-auto">
+                <h1 class="text-3xl font-bold mb-8" style="color: var(--primary-accent);">
+                    <i class="fas fa-certificate mr-3"></i>Meus Certificados
+                </h1>
+                
+                <div id="certificates-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Certificados serão carregados dinamicamente -->
+                </div>
+            </div>
+        </div>
+
+        <!-- View: Analytics -->
+        <div id="analytics-view" class="view">
+            <div class="max-w-6xl mx-auto">
+                <h1 class="text-3xl font-bold mb-8" style="color: var(--primary-accent);">
+                    <i class="fas fa-chart-bar mr-3"></i>Analytics e Relatórios
+                </h1>
+                
+                <!-- Métricas Principais -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="glass-panel p-6 text-center">
+                        <div class="text-3xl font-bold mb-2" style="color: var(--success-green);">
+                            <span id="total-study-time">0</span>h
+                        </div>
+                        <div class="text-sm text-gray-400">Tempo Total de Estudo</div>
+                    </div>
+                    
+                    <div class="glass-panel p-6 text-center">
+                        <div class="text-3xl font-bold mb-2" style="color: var(--primary-accent);">
+                            <span id="avg-lesson-time">0</span>min
+                        </div>
+                        <div class="text-sm text-gray-400">Tempo Médio por Aula</div>
+                    </div>
+                    
+                    <div class="glass-panel p-6 text-center">
+                        <div class="text-3xl font-bold mb-2" style="color: var(--warning-orange);">
+                            <span id="completion-rate">0</span>%
+                        </div>
+                        <div class="text-sm text-gray-400">Taxa de Conclusão</div>
+                    </div>
+                    
+                    <div class="glass-panel p-6 text-center">
+                        <div class="text-3xl font-bold mb-2" style="color: var(--accent-purple);">
+                            <span id="streak-record">0</span>
+                        </div>
+                        <div class="text-sm text-gray-400">Recorde de Sequência</div>
+                    </div>
+                </div>
+                
+                <!-- Gráficos e Análises -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="glass-panel p-6">
+                        <h3 class="text-xl font-bold mb-4">Progresso por Categoria</h3>
+                        <div id="category-chart" class="h-64">
+                            <!-- Gráfico será renderizado aqui -->
+                        </div>
+                    </div>
+                    
+                    <div class="glass-panel p-6">
+                        <h3 class="text-xl font-bold mb-4">Atividade Semanal</h3>
+                        <div id="activity-chart" class="h-64">
+                            <!-- Gráfico será renderizado aqui -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View: Configurações -->
+        <div id="settings-view" class="view">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-3xl font-bold mb-8" style="color: var(--primary-accent);">
+                    <i class="fas fa-cog mr-3"></i>Configurações
+                </h1>
+                
+                <div class="space-y-6">
+                    <!-- Configurações de Perfil -->
+                    <div class="glass-panel p-6">
+                        <h3 class="text-xl font-bold mb-4">Perfil do Usuário</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Nome Completo</label>
+                                <input type="text" id="settings-name" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium mb-2">Email</label>
+                                <input type="email" id="settings-email" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                            </div>
+                        </div>
+                        <button onclick="veloAcademyApp.updateProfile()" class="btn btn-primary mt-4">
+                            <i class="fas fa-save mr-2"></i>Salvar Alterações
+                        </button>
+                    </div>
+                    
+                    <!-- Configurações de Notificações -->
+                    <div class="glass-panel p-6">
+                        <h3 class="text-xl font-bold mb-4">Notificações</h3>
+                        <div class="space-y-3">
+                            <label class="flex items-center">
+                                <input type="checkbox" id="notif-email" class="mr-3">
+                                <span>Receber notificações por email</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" id="notif-push" class="mr-3">
+                                <span>Notificações push no navegador</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" id="notif-achievements" class="mr-3">
+                                <span>Alertas de conquistas</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Configurações de Google Drive -->
+                    <div class="glass-panel p-6">
+                        <h3 class="text-xl font-bold mb-4">Integração Google Drive</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium mb-2">ID da Pasta Raiz</label>
+                                <input type="text" id="drive-folder-id" placeholder="1ABC123DEF456..." class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                                <p class="text-xs text-gray-400 mt-1">ID da pasta onde estão armazenados os arquivos de curso</p>
+                            </div>
+                            <button onclick="veloAcademyApp.testDriveConnection()" class="btn btn-secondary">
+                                <i class="fas fa-link mr-2"></i>Testar Conexão
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Modal Universal -->
@@ -462,6 +737,196 @@
         </div>
     </div>
 
+    <!-- Sistema de Navegação Principal -->
+    <nav id="main-navigation" class="fixed left-0 top-0 h-full w-64 bg-gradient-to-b from-gray-900 to-gray-800 transform -translate-x-full transition-transform duration-300 z-40 shadow-2xl">
+        <div class="p-6">
+            <!-- Logo da Navegação -->
+            <div class="flex items-center space-x-3 mb-8">
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg glow-effect">
+                    <i class="fas fa-graduation-cap text-white text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-xl font-bold text-white">VeloAcademy</h2>
+                    <p class="text-xs text-gray-400">Sistema Pro</p>
+                </div>
+            </div>
+            
+            <!-- Menu de Navegação -->
+            <div class="space-y-2">
+                <button onclick="veloAcademyApp.navigateTo('dashboard')" class="nav-item w-full text-left p-3 rounded-lg transition-all duration-200 hover:bg-blue-600/20 hover:border-blue-400" data-page="dashboard">
+                    <i class="fas fa-tachometer-alt mr-3 text-blue-400"></i>
+                    <span>Dashboard</span>
+                </button>
+                
+                <button onclick="veloAcademyApp.navigateTo('courses')" class="nav-item w-full text-left p-3 rounded-lg transition-all duration-200 hover:bg-purple-600/20 hover:border-purple-400" data-page="courses">
+                    <i class="fas fa-book mr-3 text-purple-400"></i>
+                    <span>Cursos</span>
+                </button>
+                
+                <button onclick="veloAcademyApp.navigateTo('content-manager')" class="nav-item w-full text-left p-3 rounded-lg transition-all duration-200 hover:bg-green-600/20 hover:border-green-400" data-page="content-manager">
+                    <i class="fas fa-plus-circle mr-3 text-green-400"></i>
+                    <span>Gerenciar Conteúdo</span>
+                </button>
+                
+                <button onclick="veloAcademyApp.navigateTo('certificates')" class="nav-item w-full text-left p-3 rounded-lg transition-all duration-200 hover:bg-orange-600/20 hover:border-orange-400" data-page="certificates">
+                    <i class="fas fa-certificate mr-3 text-orange-400"></i>
+                    <span>Certificados</span>
+                </button>
+                
+                <button onclick="veloAcademyApp.navigateTo('analytics')" class="nav-item w-full text-left p-3 rounded-lg transition-all duration-200 hover:bg-pink-600/20 hover:border-pink-400" data-page="analytics">
+                    <i class="fas fa-chart-bar mr-3 text-pink-400"></i>
+                    <span>Analytics</span>
+                </button>
+                
+                <button onclick="veloAcademyApp.navigateTo('settings')" class="nav-item w-full text-left p-3 rounded-lg transition-all duration-200 hover:bg-gray-600/20 hover:border-gray-400" data-page="settings">
+                    <i class="fas fa-cog mr-3 text-gray-400"></i>
+                    <span>Configurações</span>
+                </button>
+            </div>
+            
+            <!-- Separador -->
+            <div class="border-t border-gray-700 my-6"></div>
+            
+            <!-- Informações do Usuário -->
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full mx-auto mb-3 flex items-center justify-center">
+                    <i class="fas fa-user text-white text-xl"></i>
+                </div>
+                <h4 class="text-white font-semibold" id="nav-user-name">Usuário</h4>
+                <p class="text-xs text-gray-400" id="nav-user-role">Aprendiz</p>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Botão de Toggle da Navegação -->
+    <button id="nav-toggle" onclick="veloAcademyApp.toggleNavigation()" class="fixed top-4 left-4 z-50 p-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <!-- Overlay da Navegação -->
+    <div id="nav-overlay" onclick="veloAcademyApp.toggleNavigation()" class="fixed inset-0 bg-black/50 z-30 hidden"></div>
+
+    <!-- Modal para Adicionar Conteúdo -->
+    <div id="add-content-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center">
+        <div class="glass-panel p-8 max-w-2xl w-full m-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-bold" style="color: var(--primary-accent);">
+                    <i class="fas fa-plus-circle mr-3"></i>Adicionar Novo Conteúdo
+                </h2>
+                <button onclick="veloAcademyApp.hideAddContentModal()" class="text-gray-400 hover:text-white text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <form id="add-content-form" class="space-y-6">
+                <!-- Informações Básicas -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Título do Conteúdo</label>
+                        <input type="text" id="content-title" required class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Tipo de Conteúdo</label>
+                        <select id="content-type" required class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                            <option value="">Selecione o tipo</option>
+                            <option value="video">Vídeo</option>
+                            <option value="pdf">PDF</option>
+                            <option value="audio">Áudio</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Duração</label>
+                        <input type="text" id="content-duration" placeholder="Ex: 15 min" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">XP por Conclusão</label>
+                        <input type="number" id="content-xp" min="1" max="100" value="15" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                    </div>
+                </div>
+                
+                <!-- Integração Google Drive -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold" style="color: var(--primary-accent);">
+                        <i class="fas fa-cloud mr-2"></i>Arquivo no Google Drive
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">ID do Arquivo</label>
+                            <input type="text" id="drive-file-id" required placeholder="1ABC123DEF456..." class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                            <p class="text-xs text-gray-400 mt-1">ID do arquivo no Google Drive</p>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Nome do Arquivo</label>
+                            <input type="text" id="drive-file-name" placeholder="Nome do arquivo no Drive" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button type="button" onclick="veloAcademyApp.previewDriveFile()" class="btn btn-secondary">
+                            <i class="fas fa-eye mr-2"></i>Visualizar
+                        </button>
+                        <button type="button" onclick="veloAcademyApp.browseDriveFiles()" class="btn btn-secondary">
+                            <i class="fas fa-folder-open mr-2"></i>Navegar no Drive
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Categoria e Tags -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Categoria</label>
+                        <select id="content-category" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                            <option value="general">Geral</option>
+                            <option value="security">Segurança</option>
+                            <option value="management">Gestão</option>
+                            <option value="service">Atendimento</option>
+                            <option value="technical">Técnico</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Tags</label>
+                        <input type="text" id="content-tags" placeholder="tag1, tag2, tag3" class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white">
+                        <p class="text-xs text-gray-400 mt-1">Separe as tags por vírgula</p>
+                    </div>
+                </div>
+                
+                <!-- Descrição -->
+                <div>
+                    <label class="block text-sm font-medium mb-2">Descrição</label>
+                    <textarea id="content-description" rows="3" placeholder="Descreva o conteúdo..." class="w-full p-3 rounded-lg bg-white/10 border border-white/20 text-white resize-none"></textarea>
+                </div>
+                
+                <!-- Botões de Ação -->
+                <div class="flex justify-end space-x-4 pt-4">
+                    <button type="button" onclick="veloAcademyApp.hideAddContentModal()" class="btn btn-secondary">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save mr-2"></i>Salvar Conteúdo
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal de Visualização do Arquivo -->
+    <div id="preview-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center">
+        <div class="glass-panel p-6 max-w-4xl w-full m-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-bold">Visualização do Arquivo</h3>
+                <button onclick="veloAcademyApp.hidePreviewModal()" class="text-gray-400 hover:text-white text-xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="preview-content" class="min-h-[400px] bg-black rounded-lg flex items-center justify-center">
+                <p class="text-gray-400">Selecione um arquivo para visualizar</p>
+            </div>
+        </div>
+    </div>
 
     <script>
     // --- BANCO DE DADOS DE CURSOS E CONTEÚDO ---
@@ -529,10 +994,70 @@
     };
 
     const achievementDatabase = {
-        'first_lesson': { title: 'Primeiros Passos', icon: '👟', description: 'Você completou sua primeira aula!', unlocked: false },
-        'first_course': { title: 'Certificado!', icon: '🎓', description: 'Você concluiu seu primeiro curso!', unlocked: false },
-        'level_5': { title: 'Nível 5', icon: '⭐', description: 'Alcançou o nível 5!', unlocked: false },
-        'security_badge': { title: 'Guardião Digital', icon: '🛡️', description: 'Concluiu o curso de Segurança!', unlocked: false },
+        'first_lesson': { 
+            title: 'Primeiros Passos', 
+            icon: '👟', 
+            description: 'Você completou sua primeira aula!', 
+            unlocked: false,
+            category: 'beginner',
+            points: 10
+        },
+        'first_course': { 
+            title: 'Certificado!', 
+            icon: '🎓', 
+            description: 'Você concluiu seu primeiro curso!', 
+            unlocked: false,
+            category: 'milestone',
+            points: 50
+        },
+        'level_5': { 
+            title: 'Nível 5', 
+            icon: '⭐', 
+            description: 'Alcançou o nível 5!', 
+            unlocked: false,
+            category: 'level',
+            points: 25
+        },
+        'security_badge': { 
+            title: 'Guardião Digital', 
+            icon: '🛡️', 
+            description: 'Concluiu o curso de Segurança!', 
+            unlocked: false,
+            category: 'specialization',
+            points: 75
+        },
+        'streak_7': {
+            title: 'Semana Perfeita',
+            icon: '🔥',
+            description: '7 dias consecutivos de estudo!',
+            unlocked: false,
+            category: 'consistency',
+            points: 30
+        },
+        'efficiency_master': {
+            title: 'Mestre da Eficiência',
+            icon: '⚡',
+            description: 'Alcançou 90% de eficiência!',
+            unlocked: false,
+            category: 'performance',
+            points: 40
+        },
+        'course_collector': {
+            title: 'Colecionador de Cursos',
+            icon: '📚',
+            description: 'Concluiu 5 cursos diferentes!',
+            unlocked: false,
+            category: 'milestone',
+            points: 60
+        },
+        'speed_learner': {
+            title: 'Aprendiz Veloz',
+            icon: '🚀',
+            description: 'Completou um curso em menos de 24h!',
+            unlocked: false,
+            category: 'speed',
+            points: 35
+        }
     };
 
     // --- NÚCLEO DA APLICAÇÃO ---
@@ -550,7 +1075,10 @@
              avatar: 'https://i.pravatar.cc/150?u=demo',
              joinDate: new Date().toISOString(),
              totalStudyTime: 0,
-             certificates: []
+             certificates: [],
+             lastStudyDate: null, // Adicionado para rastrear a data do último estudo
+             studyStreak: 0, // Adicionado para rastrear a sequência de dias
+             lessonsCompletedThisWeek: 0 // Adicionado para rastrear aulas completadas na semana
          },
         
                  init() {
@@ -659,6 +1187,102 @@
             document.getElementById('stats-completed-courses').textContent = `${completedCourses}/${totalCourses}`;
             document.getElementById('stats-overall-progress').textContent = `${overallProgress.toFixed(0)}%`;
             document.getElementById('stats-achievements').textContent = `${unlockedAchievements}/${Object.keys(achievementDatabase).length}`;
+            
+            // Atualizar dashboard interativo
+            this.updateInteractiveDashboard();
+        },
+        
+        updateInteractiveDashboard() {
+            // Calcular eficiência de estudo
+            const efficiency = this.calculateStudyEfficiency();
+            document.getElementById('efficiency-score').textContent = efficiency;
+            
+            // Calcular dias consecutivos
+            const streak = this.calculateStudyStreak();
+            document.getElementById('streak-days').textContent = streak;
+            
+            // Calcular metas semanais
+            const weeklyGoals = this.calculateWeeklyGoals();
+            document.getElementById('weekly-goals').textContent = weeklyGoals;
+            
+            // Atualizar gráfico semanal
+            this.updateWeeklyChart();
+            
+            // Atualizar insights
+            this.updateDailyInsights();
+        },
+        
+        calculateStudyEfficiency() {
+            const totalStudyTime = this.userData.totalStudyTime || 0;
+            const completedLessons = Object.values(this.userData.progress).reduce((acc, course) => acc + (course.completedLessons?.length || 0), 0);
+            
+            if (totalStudyTime === 0 || completedLessons === 0) return 0;
+            
+            // Eficiência baseada no tempo de estudo vs. lições completadas
+            const efficiency = Math.min(100, Math.round((completedLessons / totalStudyTime) * 1000));
+            return efficiency;
+        },
+        
+        calculateStudyStreak() {
+            const today = new Date();
+            const lastStudyDate = this.userData.lastStudyDate ? new Date(this.userData.lastStudyDate) : null;
+            
+            if (!lastStudyDate) return 0;
+            
+            const diffTime = Math.abs(today - lastStudyDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            return diffDays <= 1 ? (this.userData.studyStreak || 0) : 0;
+        },
+        
+        calculateWeeklyGoals() {
+            const completedThisWeek = this.userData.lessonsCompletedThisWeek || 0;
+            return Math.min(5, completedThisWeek);
+        },
+        
+        updateWeeklyChart() {
+            const weeklyData = this.userData.weeklyProgress || [0, 0, 0, 0, 0, 0, 0];
+            
+            for (let i = 0; i < 7; i++) {
+                const dayElement = document.getElementById(`day-${i + 1}`);
+                if (dayElement) {
+                    const height = Math.min(100, weeklyData[i] * 20); // 5 lições = 100% altura
+                    dayElement.style.height = `${height}%`;
+                }
+            }
+        },
+        
+        updateDailyInsights() {
+            const efficiency = this.calculateStudyEfficiency();
+            const streak = this.calculateStudyStreak();
+            
+            let insight = '';
+            let goal = '';
+            
+            if (efficiency >= 90) {
+                insight = 'Excelente! Você é um mestre da eficiência!';
+                goal = 'Mantenha esse ritmo e ajude outros colegas.';
+            } else if (efficiency >= 70) {
+                insight = 'Muito bom! Sua eficiência está acima da média.';
+                goal = 'Complete mais 2 aulas para atingir 90% de eficiência.';
+            } else if (efficiency >= 50) {
+                insight = 'Continue assim! Você está progredindo bem.';
+                goal = 'Foque em completar 3 aulas hoje para melhorar sua eficiência.';
+            } else {
+                insight = 'Todo começo é desafiador. Não desista!';
+                goal = 'Complete pelo menos 1 aula hoje para começar sua jornada.';
+            }
+            
+            if (streak >= 7) {
+                insight = '🔥 Incrível! Você mantém uma sequência perfeita!';
+                goal = 'Continue por mais 3 dias para quebrar seu recorde.';
+            } else if (streak >= 3) {
+                insight = 'Ótimo trabalho! Você está construindo um hábito sólido.';
+                goal = 'Complete mais 4 dias para atingir uma semana perfeita.';
+            }
+            
+            document.getElementById('daily-insight').textContent = insight;
+            document.getElementById('next-goal').textContent = goal;
         },
         
         renderResumeCard() {
@@ -846,7 +1470,7 @@
                 this.userData.achievements[id] = { unlocked: true };
                 const achievement = achievementDatabase[id];
                 this.showNotification(`Conquista: ${achievement.title}`, achievement.description, 'achievement');
-                this.addXP(50, 'Conquista Desbloqueada');
+                this.addXP(achievement.points, 'Conquista Desbloqueada');
             }
         },
         
@@ -933,23 +1557,86 @@
         },
 
                  showNotification(title, message, type = 'info') {
-             const container = document.getElementById('notification-container');
-             const icons = { info: 'fas fa-info-circle', success: 'fas fa-check-circle', xp: 'fas fa-star', 'level-up': 'fas fa-arrow-up', achievement: 'fas fa-trophy' };
-             const colors = { 
-                 info: '#000058', 
-                 success: '#1DFDB9', 
-                 xp: '#FF8400', 
-                 'level-up': '#791DD0', 
-                 achievement: '#FF00D7' 
-             };
-             
-             const notif = document.createElement('div');
-             notif.style.borderLeftColor = colors[type];
-             notif.className = `toast-notification glass-panel p-4 rounded-lg shadow-lg border-l-4 w-80`;
-             notif.innerHTML = `<div class="flex items-start space-x-3"><i class="${icons[type]} text-xl mt-1" style="color: ${colors[type]};"></i><div><p class="font-bold">${title}</p><p class="text-sm text-gray-300">${message}</p></div></div>`;
-             container.appendChild(notif);
-             setTimeout(() => notif.remove(), 5000);
-         },
+            const container = document.getElementById('notification-container');
+            const icons = { 
+                info: 'fas fa-info-circle', 
+                success: 'fas fa-check-circle', 
+                xp: 'fas fa-star', 
+                'level-up': 'fas fa-arrow-up', 
+                achievement: 'fas fa-trophy',
+                warning: 'fas fa-exclamation-triangle',
+                error: 'fas fa-times-circle'
+            };
+            const colors = { 
+                info: '#1634FF', 
+                success: '#1DFDB9', 
+                xp: '#FF8400', 
+                'level-up': '#791DD0', 
+                achievement: '#FF00D7',
+                warning: '#FF8400',
+                error: '#FF00D7'
+            };
+            
+            const notif = document.createElement('div');
+            notif.style.borderLeftColor = colors[type];
+            notif.className = `toast-notification glass-panel p-4 rounded-lg shadow-lg border-l-4 w-80 hover:scale-105 transition-transform duration-200`;
+            notif.innerHTML = `
+                <div class="flex items-start space-x-3">
+                    <i class="${icons[type]} text-xl mt-1" style="color: ${colors[type]};"></i>
+                    <div class="flex-1">
+                        <p class="font-bold">${title}</p>
+                        <p class="text-sm text-gray-300">${message}</p>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            container.appendChild(notif);
+            
+            // Auto-remove após 5 segundos
+            setTimeout(() => {
+                if (notif.parentElement) {
+                    notif.style.transform = 'translateX(100%)';
+                    notif.style.opacity = '0';
+                    setTimeout(() => notif.remove(), 300);
+                }
+            }, 5000);
+        },
+        
+        showToast(message, type = 'info', duration = 3000) {
+            const container = document.getElementById('toast-container');
+            const colors = {
+                info: '#1634FF',
+                success: '#1DFDB9',
+                warning: '#FF8400',
+                error: '#FF00D7'
+            };
+            
+            const toast = document.createElement('div');
+            toast.className = `glass-panel p-3 rounded-lg shadow-lg border-l-4 transform translate-x-full transition-all duration-300`;
+            toast.style.borderLeftColor = colors[type];
+            toast.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-${type === 'info' ? 'info' : type === 'success' ? 'check' : type === 'warning' ? 'exclamation-triangle' : 'times'}-circle" style="color: ${colors[type]};"></i>
+                    <span class="text-sm">${message}</span>
+                </div>
+            `;
+            
+            container.appendChild(toast);
+            
+            // Animar entrada
+            setTimeout(() => {
+                toast.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Auto-remove
+            setTimeout(() => {
+                toast.style.transform = 'translateX(100%)';
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, duration);
+        },
 
          // === NOVAS FUNCIONALIDADES AVANÇADAS ===
          
@@ -1027,7 +1714,10 @@
                  avatar: 'https://i.pravatar.cc/150?u=demo',
                  joinDate: new Date().toISOString(),
                  totalStudyTime: 0,
-                 certificates: []
+                 certificates: [],
+                 lastStudyDate: null, // Adicionado para rastrear a data do último estudo
+                 studyStreak: 0, // Adicionado para rastrear a sequência de dias
+                 lessonsCompletedThisWeek: 0 // Adicionado para rastrear aulas completadas na semana
              };
              this.saveData();
              this.showAuthModal();
@@ -1110,10 +1800,277 @@
              a.download = `certificado_${certificate.courseName.replace(/\s+/g, '_')}.html`;
              a.click();
              URL.revokeObjectURL(url);
-         }
+         },
+
+         showPushNotification(title, message) {
+             const pushNotification = document.getElementById('push-notification');
+             pushNotification.innerHTML = `
+                 <div class="flex items-center justify-between max-w-4xl mx-auto">
+                     <div class="flex items-center space-x-3">
+                         <i class="fas fa-bell text-xl"></i>
+                         <span class="font-semibold">${title}</span>
+                     </div>
+                     <button onclick="veloAcademyApp.hidePushNotification()" class="text-white hover:text-gray-200">
+                         <i class="fas fa-times"></i>
+                     </button>
+                 </div>
+             `;
+             pushNotification.classList.remove('-translate-y-full');
+             setTimeout(() => pushNotification.classList.add('-translate-y-full'), 5000);
+         },
+
+         hidePushNotification() {
+             document.getElementById('push-notification').classList.add('-translate-y-full');
+         },
+
+         toggleNavigation() {
+             const navigation = document.getElementById('main-navigation');
+             const overlay = document.getElementById('nav-overlay');
+             
+             if (navigation.classList.contains('-translate-x-full')) {
+                 navigation.classList.remove('-translate-x-full');
+                 navigation.classList.add('translate-x-0');
+                 overlay.classList.remove('hidden');
+             } else {
+                 navigation.classList.add('-translate-x-full');
+                 navigation.classList.remove('translate-x-0');
+                 overlay.classList.add('hidden');
+             }
+         },
+
+         navigateTo(page) {
+             this.switchView(page);
+             this.updateNavigationActive(page);
+             this.loadPageContent(page);
+         },
+        
+        updateNavigationActive(activePage) {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('bg-blue-600/20', 'border-blue-400');
+                if (item.dataset.page === activePage) {
+                    item.classList.add('bg-blue-600/20', 'border-blue-400');
+                }
+            });
+        },
+        
+        loadPageContent(page) {
+            switch(page) {
+                case 'dashboard':
+                    this.renderDashboard();
+                    break;
+                case 'courses':
+                    this.renderCoursesPage();
+                    break;
+                case 'content-manager':
+                    this.renderContentManager();
+                    break;
+                case 'certificates':
+                    this.renderCertificates();
+                    break;
+                case 'analytics':
+                    this.renderAnalytics();
+                    break;
+                case 'settings':
+                    this.renderSettings();
+                    break;
+            }
+        },
+        
+        // === GERENCIAMENTO DE CONTEÚDO ===
+        
+        renderContentManager() {
+            const contentList = document.getElementById('content-list');
+            const content = this.loadContentFromStorage();
+            
+            if (content.length === 0) {
+                contentList.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <i class="fas fa-folder-open text-6xl text-gray-400 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-2">Nenhum conteúdo encontrado</h3>
+                        <p class="text-gray-400 mb-4">Comece adicionando seu primeiro conteúdo de curso</p>
+                        <button onclick="veloAcademyApp.showAddContentModal()" class="btn btn-primary">
+                            <i class="fas fa-plus mr-2"></i>Adicionar Primeiro Conteúdo
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+            
+            contentList.innerHTML = content.map(item => `
+                <div class="glass-panel p-6 hover:scale-105 transition-transform duration-200 cursor-pointer" onclick="veloAcademyApp.editContent('${item.id}')">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 rounded-lg flex items-center justify-center text-white text-xl" style="background: ${this.getContentTypeColor(item.type)};">
+                            <i class="fas ${this.getContentTypeIcon(item.type)}"></i>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button onclick="event.stopPropagation(); veloAcademyApp.previewContent('${item.id}')" class="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors">
+                                <i class="fas fa-eye text-sm"></i>
+                            </button>
+                            <button onclick="event.stopPropagation(); veloAcademyApp.deleteContent('${item.id}')" class="p-2 rounded-lg bg-red-500/20 hover:bg-red-500/40 transition-colors">
+                                <i class="fas fa-trash text-sm text-red-400"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <h3 class="font-semibold mb-2">${item.title}</h3>
+                    <p class="text-sm text-gray-400 mb-3">${item.description || 'Sem descrição'}</p>
+                    
+                    <div class="flex items-center justify-between text-xs text-gray-400">
+                        <span class="flex items-center">
+                            <i class="fas fa-clock mr-1"></i>
+                            ${item.duration}
+                        </span>
+                        <span class="flex items-center">
+                            <i class="fas fa-star mr-1"></i>
+                            ${item.xp} XP
+                        </span>
+                    </div>
+                    
+                    <div class="mt-3 flex flex-wrap gap-1">
+                        <span class="px-2 py-1 rounded-full text-xs" style="background: rgba(29, 253, 185, 0.2); color: var(--success-green);">
+                            ${item.category}
+                        </span>
+                        ${item.tags ? item.tags.split(',').map(tag => `
+                            <span class="px-2 py-1 rounded-full text-xs bg-white/10">${tag.trim()}</span>
+                        `).join('') : ''}
+                    </div>
+                </div>
+            `).join('');
+        },
+        
+        showAddContentModal() {
+            document.getElementById('add-content-modal').classList.remove('hidden');
+            document.getElementById('add-content-modal').classList.add('flex');
+            
+            // Configurar o formulário
+            document.getElementById('add-content-form').onsubmit = (e) => {
+                e.preventDefault();
+                this.saveContent();
+            };
+        },
+        
+        hideAddContentModal() {
+            document.getElementById('add-content-modal').classList.add('hidden');
+            document.getElementById('add-content-modal').classList.remove('flex');
+            document.getElementById('add-content-form').reset();
+        },
+        
+        saveContent() {
+            const formData = {
+                id: Date.now().toString(),
+                title: document.getElementById('content-title').value,
+                type: document.getElementById('content-type').value,
+                duration: document.getElementById('content-duration').value,
+                xp: parseInt(document.getElementById('content-xp').value),
+                driveFileId: document.getElementById('drive-file-id').value,
+                driveFileName: document.getElementById('drive-file-name').value,
+                category: document.getElementById('content-category').value,
+                tags: document.getElementById('content-tags').value,
+                description: document.getElementById('content-description').value,
+                createdAt: new Date().toISOString()
+            };
+            
+            // Validar campos obrigatórios
+            if (!formData.title || !formData.type || !formData.driveFileId) {
+                this.showToast('Preencha todos os campos obrigatórios', 'error');
+                return;
+            }
+            
+            // Salvar no localStorage
+            const content = this.loadContentFromStorage();
+            content.push(formData);
+            localStorage.setItem('veloAcademyContent', JSON.stringify(content));
+            
+            this.hideAddContentModal();
+            this.renderContentManager();
+            this.showToast('Conteúdo salvo com sucesso!', 'success');
+        },
+        
+        loadContentFromStorage() {
+            const stored = localStorage.getItem('veloAcademyContent');
+            return stored ? JSON.parse(stored) : [];
+        },
+        
+        getContentTypeColor(type) {
+            const colors = {
+                video: 'linear-gradient(135deg, #FF6B6B, #FF8E8E)',
+                pdf: 'linear-gradient(135deg, #4ECDC4, #44A08D)',
+                audio: 'linear-gradient(135deg, #A8E6CF, #7FCDCD)'
+            };
+            return colors[type] || 'linear-gradient(135deg, #667eea, #764ba2)';
+        },
+        
+        getContentTypeIcon(type) {
+            const icons = {
+                video: 'fa-video',
+                pdf: 'fa-file-pdf',
+                audio: 'fa-headphones'
+            };
+            return icons[type] || 'fa-file';
+        },
+        
+        previewDriveFile() {
+            const fileId = document.getElementById('drive-file-id').value;
+            if (!fileId) {
+                this.showToast('Digite o ID do arquivo primeiro', 'warning');
+                return;
+            }
+            
+            const type = document.getElementById('content-type').value;
+            const previewUrl = `https://drive.google.com/uc?export=view&id=${fileId}`;
+            
+            document.getElementById('preview-content').innerHTML = this.getPlayerHtml({
+                type: type,
+                filePath: previewUrl,
+                title: 'Visualização'
+            });
+            
+            document.getElementById('preview-modal').classList.remove('hidden');
+            document.getElementById('preview-modal').classList.add('flex');
+        },
+        
+        hidePreviewModal() {
+            document.getElementById('preview-modal').classList.add('hidden');
+            document.getElementById('preview-modal').classList.remove('flex');
+        },
+        
+        browseDriveFiles() {
+            this.showToast('Funcionalidade em desenvolvimento. Use o ID do arquivo diretamente.', 'info');
+        },
+        
+        editContent(contentId) {
+            // Implementar edição de conteúdo
+            this.showToast('Edição em desenvolvimento', 'info');
+        },
+        
+        deleteContent(contentId) {
+            if (confirm('Tem certeza que deseja excluir este conteúdo?')) {
+                const content = this.loadContentFromStorage();
+                const filtered = content.filter(item => item.id !== contentId);
+                localStorage.setItem('veloAcademyContent', JSON.stringify(filtered));
+                this.renderContentManager();
+                this.showToast('Conteúdo excluído com sucesso', 'success');
+            }
+        },
+        
+        previewContent(contentId) {
+            const content = this.loadContentFromStorage();
+            const item = content.find(c => c.id === contentId);
+            if (item) {
+                document.getElementById('preview-content').innerHTML = this.getPlayerHtml({
+                    type: item.type,
+                    filePath: `https://drive.google.com/uc?export=view&id=${item.driveFileId}`,
+                    title: item.title
+                });
+                this.hidePreviewModal();
+            }
+        }
     };
 
     veloAcademyApp.init();
+</script>
+</body>
+</html>
     </script>
 </body>
 </html>
