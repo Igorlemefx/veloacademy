@@ -19,6 +19,10 @@
             --accent-orange: #FF8400;
             --accent-pink: #FF00D7;
             --accent-purple: #791DD0;
+            --success-green: #1DFDB9;
+            --warning-orange: #FF8400;
+            --error-red: #FF00D7;
+            --info-blue: #1634FF;
         }
 
         .theme-light {
@@ -46,77 +50,270 @@
             transition: all 0.3s ease;
         }
 
-        .btn { border-radius: 12px; padding: 10px 20px; border: none; font-weight: 600; transition: all 0.3s ease; cursor: pointer; }
-        .btn-primary { background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-accent) 100%); color: white; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 0, 88, 0.5); }
-        .btn-primary:disabled { background: #555; cursor: not-allowed; transform: none; box-shadow: none; }
+        .btn { 
+            border-radius: 12px; 
+            padding: 10px 20px; 
+            border: none; 
+            font-weight: 600; 
+            transition: all 0.3s ease; 
+            cursor: pointer; 
+        }
         
-        .btn-secondary { background: rgba(255, 255, 255, 0.1); color: var(--text-primary); border: 1px solid rgba(255, 255, 255, 0.2); }
-        .theme-light .btn-secondary { background: rgba(0, 0, 0, 0.05); border-color: rgba(0, 0, 0, 0.1); }
-        .btn-secondary:hover { background: rgba(255, 255, 255, 0.2); }
-        .theme-light .btn-secondary:hover { background: rgba(0, 0, 0, 0.1); }
+        .btn-primary { 
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-accent) 100%); 
+            color: white; 
+            border: 2px solid var(--primary-accent);
+        }
+        
+        .btn-primary:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 20px rgba(22, 52, 255, 0.4);
+            border-color: var(--xp-color);
+        }
+        
+        .btn-primary:disabled { 
+            background: #555; 
+            cursor: not-allowed; 
+            transform: none; 
+            box-shadow: none; 
+        }
+        
+        .btn-secondary { 
+            background: rgba(29, 253, 185, 0.1); 
+            color: var(--xp-color); 
+            border: 2px solid var(--xp-color); 
+        }
+        
+        .theme-light .btn-secondary { 
+            background: rgba(29, 253, 185, 0.05); 
+            border-color: var(--xp-color); 
+        }
+        
+        .btn-secondary:hover { 
+            background: rgba(29, 253, 185, 0.2); 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(29, 253, 185, 0.3);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, var(--success-green) 0%, #00D4AA 100%);
+            color: var(--primary-dark);
+            border: 2px solid var(--success-green);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, var(--warning-orange) 0%, #FF6B00 100%);
+            color: white;
+            border: 2px solid var(--warning-orange);
+        }
+        
+        .btn-danger { 
+            background: linear-gradient(135deg, var(--error-red) 0%, #CC00B3 100%); 
+            color: white; 
+            border: 2px solid var(--error-red);
+        }
         
         /* Estilos específicos para o botão de tema */
         #theme-switcher {
             background: rgba(22, 52, 255, 0.15) !important;
-            border: 2px solid #1634FF !important;
-            color: #1634FF !important;
+            border: 2px solid var(--primary-accent) !important;
+            color: var(--primary-accent) !important;
             box-shadow: 0 4px 12px rgba(22, 52, 255, 0.3);
             transition: all 0.3s ease;
         }
         
         #theme-switcher:hover {
             background: rgba(22, 52, 255, 0.25) !important;
-            border-color: #1DFDB9 !important;
-            color: #1DFDB9 !important;
+            border-color: var(--xp-color) !important;
+            color: var(--xp-color) !important;
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(22, 52, 255, 0.4);
         }
         
         .theme-light #theme-switcher {
             background: rgba(22, 52, 255, 0.1) !important;
-            border-color: #1634FF !important;
-            color: #1634FF !important;
+            border-color: var(--primary-accent) !important;
+            color: var(--primary-accent) !important;
         }
         
         .theme-light #theme-switcher:hover {
             background: rgba(22, 52, 255, 0.2) !important;
-            border-color: #1DFDB9 !important;
-            color: #1DFDB9 !important;
+            border-color: var(--xp-color) !important;
+            color: var(--xp-color) !important;
         }
 
-        .btn-danger { background: #FF3B30; color: white; }
+        .progress-bar { 
+            height: 8px; 
+            background: rgba(29, 253, 185, 0.2); 
+            border-radius: 4px; 
+            overflow: hidden; 
+        }
         
-        .progress-bar { height: 6px; background: rgba(255, 255, 255, 0.1); border-radius: 3px; overflow: hidden; }
-        .theme-light .progress-bar { background: rgba(0, 0, 0, 0.1); }
-        .progress-fill { height: 100%; background: var(--primary-accent); border-radius: 3px; transition: width 0.5s ease; }
+        .theme-light .progress-bar { 
+            background: rgba(29, 253, 185, 0.1); 
+        }
         
-        .xp-bar { height: 8px; background: rgba(52, 211, 153, 0.2); border-radius: 4px; overflow: hidden; }
-        .xp-fill { height: 100%; background: var(--xp-color); border-radius: 4px; transition: width 0.5s ease; }
+        .progress-fill { 
+            height: 100%; 
+            background: linear-gradient(90deg, var(--primary-accent) 0%, var(--xp-color) 100%); 
+            border-radius: 4px; 
+            transition: width 0.5s ease; 
+        }
+        
+        .xp-bar { 
+            height: 10px; 
+            background: rgba(29, 253, 185, 0.2); 
+            border-radius: 5px; 
+            overflow: hidden; 
+        }
+        
+        .xp-fill { 
+            height: 100%; 
+            background: linear-gradient(90deg, var(--xp-color) 0%, var(--success-green) 100%); 
+            border-radius: 5px; 
+            transition: width 0.5s ease; 
+        }
 
-        .view { display: none; animation: fadeIn 0.5s ease; }
-        .view.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .view { 
+            display: none; 
+            animation: fadeIn 0.5s ease; 
+        }
+        
+        .view.active { 
+            display: block; 
+        }
+        
+        @keyframes fadeIn { 
+            from { 
+                opacity: 0; 
+                transform: translateY(10px); 
+            } 
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            } 
+        }
 
-        .lesson-item.completed .lesson-title { text-decoration: line-through; color: #888; }
-        .theme-light .lesson-item.completed .lesson-title { color: #aaa; }
-        .lesson-item.active { background-color: rgba(0, 122, 255, 0.2); border-left: 3px solid var(--primary-accent); }
+        .lesson-item.completed .lesson-title { 
+            text-decoration: line-through; 
+            color: var(--success-green); 
+        }
         
-        .toast-notification { animation: slideInRight 0.5s ease, fadeOut 0.5s ease 4.5s forwards; }
-        @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-        @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; } }
+        .theme-light .lesson-item.completed .lesson-title { 
+            color: var(--success-green); 
+        }
         
-        .achievement-icon { filter: grayscale(80%); transition: all 0.3s ease; }
-        .achievement-icon.unlocked { filter: grayscale(0%); transform: scale(1.1); }
+        .lesson-item.active { 
+            background-color: rgba(22, 52, 255, 0.2); 
+            border-left: 4px solid var(--primary-accent); 
+        }
+        
+        .toast-notification { 
+            animation: slideInRight 0.5s ease, fadeOut 0.5s ease 4.5s forwards; 
+        }
+        
+        @keyframes slideInRight { 
+            from { 
+                transform: translateX(100%); 
+                opacity: 0; 
+            } 
+            to { 
+                transform: translateX(0); 
+                opacity: 1; 
+            } 
+        }
+        
+        @keyframes fadeOut { 
+            from { 
+                opacity: 1; 
+            } 
+            to { 
+                opacity: 0; 
+            } 
+        }
+        
+        .achievement-icon { 
+            filter: grayscale(80%); 
+            transition: all 0.3s ease; 
+        }
+        
+        .achievement-icon.unlocked { 
+            filter: grayscale(0%); 
+            transform: scale(1.1); 
+        }
+
+        /* Cores específicas para elementos do dashboard */
+        .stats-card {
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stats-card.courses { border-left-color: var(--accent-purple); }
+        .stats-card.completed { border-left-color: var(--primary-accent); }
+        .stats-card.achievements { border-left-color: var(--warning-orange); }
+        .stats-card.progress { border-left-color: var(--success-green); }
+        
+        .featured-course {
+            background: linear-gradient(135deg, rgba(22, 52, 255, 0.1) 0%, rgba(121, 29, 208, 0.1) 100%);
+            border: 2px solid var(--primary-accent);
+        }
+        
+        .achievement-badge {
+            background: linear-gradient(135deg, var(--warning-orange) 0%, var(--accent-pink) 100%);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 10px;
+        }
 
         /* General text color overrides for light theme */
         .theme-light h1, .theme-light h2, .theme-light h3, .theme-light h4, .theme-light p, .theme-light span, .theme-light div {
             color: var(--text-primary);
         }
-        .theme-light .text-gray-400 { color: var(--text-secondary) !important; }
-        .theme-light .text-gray-300 { color: #4a5568 !important; }
-        .theme-light .text-white { color: var(--text-primary) !important; }
-        .theme-light .border-gray-800 { border-color: #e2e8f0 !important; }
+        
+        .theme-light .text-gray-400 { 
+            color: var(--text-secondary) !important; 
+        }
+        
+        .theme-light .text-gray-300 { 
+            color: #4a5568 !important; 
+        }
+        
+        .theme-light .text-white { 
+            color: var(--text-primary) !important; 
+        }
+        
+        .theme-light .border-gray-800 { 
+            border-color: #e2e8f0 !important; 
+        }
+        
+        /* Animações e transições */
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .glow-effect {
+            transition: all 0.3s ease;
+        }
+        
+        .glow-effect:hover {
+            box-shadow: 0 0 20px rgba(29, 253, 185, 0.4);
+        }
     </style>
 </head>
 <body class="p-4 sm:p-8">
@@ -152,11 +349,11 @@
     <!-- Cabeçalho Principal da Aplicação -->
     <header class="flex flex-wrap justify-between items-center mb-8 pb-4 border-b border-gray-800 gap-4">
         <div class="flex items-center space-x-4">
-            <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg" style="background: linear-gradient(135deg, #000058 0%, #1634FF 100%);">
+            <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg glow-effect" style="background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-accent) 100%);">
                 <i class="fas fa-graduation-cap text-white text-xl"></i>
             </div>
             <div>
-                <h1 class="text-3xl font-bold">VeloAcademy</h1>
+                <h1 class="text-3xl font-bold" style="color: var(--primary-accent);">VeloAcademy</h1>
                 <p class="text-gray-400">Sistema Principal de Treinamento</p>
             </div>
         </div>
@@ -194,7 +391,7 @@
         <!-- View: Dashboard de Cursos -->
         <div id="dashboard-view" class="view active">
             <!-- Curso em Destaque -->
-            <div id="featured-course-section" class="glass-panel p-6 mb-8 flex flex-col md:flex-row items-center gap-6 bg-gradient-to-r from-blue-500/10 to-purple-500/10">
+            <div id="featured-course-section" class="glass-panel p-6 mb-8 flex flex-col md:flex-row items-center gap-6 featured-course hover-lift">
                 <!-- Conteúdo do Curso em Destaque -->
             </div>
 
@@ -202,32 +399,32 @@
                 <div class="lg:col-span-2">
                     <!-- Estatísticas -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
-                        <div class="glass-panel p-4 flex items-center space-x-4">
-                            <i class="fas fa-layer-group text-2xl" style="color: #791DD0;"></i>
+                        <div class="glass-panel p-4 flex items-center space-x-4 stats-card courses hover-lift">
+                            <i class="fas fa-layer-group text-2xl" style="color: var(--accent-purple);"></i>
                             <div>
                                 <h3 class="text-gray-400 text-sm">Cursos Disponíveis</h3>
-                                <p id="stats-total-courses" class="text-2xl font-bold">0</p>
+                                <p id="stats-total-courses" class="text-2xl font-bold" style="color: var(--accent-purple);">0</p>
                             </div>
                         </div>
-                        <div class="glass-panel p-4 flex items-center space-x-4">
-                            <i class="fas fa-book text-2xl" style="color: #1634FF;"></i>
+                        <div class="glass-panel p-4 flex items-center space-x-4 stats-card completed hover-lift">
+                            <i class="fas fa-book text-2xl" style="color: var(--primary-accent);"></i>
                             <div>
                                 <h3 class="text-gray-400 text-sm">Cursos Concluídos</h3>
-                                <p id="stats-completed-courses" class="text-2xl font-bold">0</p>
+                                <p id="stats-completed-courses" class="text-2xl font-bold" style="color: var(--primary-accent);">0</p>
                             </div>
                         </div>
-                        <div class="glass-panel p-4 flex items-center space-x-4">
-                            <i class="fas fa-trophy text-2xl" style="color: #FF8400;"></i>
+                        <div class="glass-panel p-4 flex items-center space-x-4 stats-card achievements hover-lift">
+                            <i class="fas fa-trophy text-2xl" style="color: var(--warning-orange);"></i>
                             <div>
                                 <h3 class="text-gray-400 text-sm">Conquistas</h3>
-                                <p id="stats-achievements" class="text-2xl font-bold">0</p>
+                                <p id="stats-achievements" class="text-2xl font-bold" style="color: var(--warning-orange);">0</p>
                             </div>
                         </div>
-                        <div class="glass-panel p-4 flex items-center space-x-4">
-                            <i class="fas fa-tasks text-2xl" style="color: #1DFDB9;"></i>
+                        <div class="glass-panel p-4 flex items-center space-x-4 stats-card progress hover-lift">
+                            <i class="fas fa-tasks text-2xl" style="color: var(--success-green);"></i>
                             <div>
                                 <h3 class="text-gray-400 text-sm">Progresso Total</h3>
-                                <p id="stats-overall-progress" class="text-2xl font-bold text-green-400">0%</p>
+                                <p id="stats-overall-progress" class="text-2xl font-bold" style="color: var(--success-green);">0%</p>
                             </div>
                         </div>
                     </div>
@@ -245,7 +442,7 @@
                 <!-- Barra Lateral do Dashboard -->
                 <aside class="lg:col-span-1">
                     <div class="glass-panel p-6 h-fit sticky top-8">
-                        <h3 class="text-xl font-bold mb-4">Minhas Conquistas</h3>
+                        <h3 class="text-xl font-bold mb-4" style="color: var(--primary-accent);">Minhas Conquistas</h3>
                         <div id="achievements-grid" class="grid grid-cols-3 gap-4 text-center">
                             <!-- Conquistas serão inseridas aqui -->
                         </div>
