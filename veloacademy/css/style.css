@@ -948,7 +948,7 @@ footer {
     }
 
     .filter-row select {
-        width: 100%;
+    width: 100%;
         max-width: 300px;
     }
 
@@ -991,7 +991,7 @@ footer {
     }
 
     .btn-clear-filters, .btn-save-filters {
-        width: 100%;
+    width: 100%;
         justify-content: center;
     }
 }
