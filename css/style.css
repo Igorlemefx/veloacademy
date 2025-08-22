@@ -9,11 +9,11 @@
 }
 
 :root {
-    /* Cores Premium */
-    --primary-color: #667eea;
-    --primary-dark: #5a67d8;
-    --primary-light: #a3bffa;
-    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* Cores da Marca Velotax */
+    --primary-color: #1e40af;
+    --primary-dark: #1e3a8a;
+    --primary-light: #3b82f6;
+    --primary-gradient: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
     
     /* Cores Secundárias */
     --success-color: #10b981;
@@ -222,6 +222,16 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.logo-slogan {
+    color: var(--gray-500);
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+    opacity: 0.9;
+    margin-top: 4px;
 }
 
 .sidebar-nav {

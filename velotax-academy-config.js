@@ -1,16 +1,19 @@
-// Velotax Academy - Configuração da Academia
+// Velotax Academy - Configuração Centralizada
 const VelotaxAcademyConfig = {
     // Informações da Academia
     academy: {
         name: "Velotax Academy",
-        slogan: "Transformando conhecimento em carreira",
-        description: "Plataforma de aprendizado corporativo da Velotax, oferecendo cursos de alta qualidade para desenvolvimento profissional.",
+        slogan: "Transformando Conhecimento em Resultados",
+        description: "Plataforma de treinamento corporativo da Velotax, especializada em desenvolvimento de software, gestão de projetos e inovação tecnológica.",
         logo: {
             icon: "fas fa-graduation-cap",
             colors: {
-                primary: "#667eea",
-                secondary: "#764ba2",
-                accent: "#10b981"
+                primary: "#1e40af",      // Azul Velotax
+                secondary: "#3b82f6",    // Azul mais claro
+                accent: "#f59e0b",       // Laranja para destaque
+                success: "#10b981",      // Verde para sucesso
+                warning: "#f59e0b",      // Laranja para alertas
+                error: "#ef4444"         // Vermelho para erros
             }
         }
     },
@@ -18,233 +21,222 @@ const VelotaxAcademyConfig = {
     // Categorias de Cursos
     categories: [
         {
-            id: "frontend",
-            name: "Desenvolvimento Frontend",
+            id: "desenvolvimento",
+            name: "Desenvolvimento de Software",
             icon: "fas fa-code",
-            description: "Cursos de HTML, CSS, JavaScript, React e outras tecnologias frontend",
-            color: "#667eea"
+            description: "Cursos de programação, frameworks e tecnologias modernas",
+            color: "#1e40af",
+            count: 12
         },
         {
-            id: "backend",
-            name: "Desenvolvimento Backend",
-            icon: "fas fa-server",
-            description: "Cursos de Node.js, Python, Java, banco de dados e APIs",
-            color: "#10b981"
+            id: "gestao",
+            name: "Gestão de Projetos",
+            icon: "fas fa-tasks",
+            description: "Metodologias ágeis, planejamento e execução de projetos",
+            color: "#3b82f6",
+            count: 8
         },
         {
-            id: "mobile",
-            name: "Desenvolvimento Mobile",
-            icon: "fas fa-mobile-alt",
-            description: "Cursos de React Native, Flutter, iOS e Android",
-            color: "#f59e0b"
-        },
-        {
-            id: "devops",
-            name: "DevOps & Infraestrutura",
-            icon: "fas fa-cloud",
-            description: "Cursos de Docker, Kubernetes, AWS e CI/CD",
-            color: "#8b5cf6"
-        },
-        {
-            id: "design",
-            name: "Design & UX/UI",
-            icon: "fas fa-palette",
-            description: "Cursos de Figma, Adobe XD, design responsivo e experiência do usuário",
-            color: "#ec4899"
-        },
-        {
-            id: "business",
-            name: "Negócios & Gestão",
+            id: "dados",
+            name: "Ciência de Dados",
             icon: "fas fa-chart-line",
-            description: "Cursos de gestão de projetos, metodologias ágeis e liderança",
-            color: "#06b6d4"
+            description: "Análise de dados, machine learning e business intelligence",
+            color: "#10b981",
+            count: 6
+        },
+        {
+            id: "cloud",
+            name: "Cloud Computing",
+            icon: "fas fa-cloud",
+            description: "AWS, Azure, Google Cloud e arquiteturas em nuvem",
+            color: "#8b5cf6",
+            count: 5
+        },
+        {
+            id: "seguranca",
+            name: "Segurança da Informação",
+            icon: "fas fa-shield-alt",
+            description: "Cybersecurity, proteção de dados e compliance",
+            color: "#ef4444",
+            count: 4
         }
     ],
 
     // Cursos Disponíveis
     courses: [
         {
-            id: "html-css-basico",
-            title: "HTML5 e CSS3 - Fundamentos",
-            category: "frontend",
-            instructor: "Maria Santos",
-            duration: "20 horas",
-            level: "Iniciante",
-            rating: 4.8,
-            students: 1247,
-            price: "Gratuito",
-            description: "Aprenda os fundamentos de desenvolvimento web com HTML5 e CSS3. Crie páginas responsivas e modernas.",
-            modules: [
-                "Introdução ao HTML5",
-                "Estrutura e Semântica",
-                "CSS3 Básico",
-                "Layout com Flexbox",
-                "Design Responsivo",
-                "Projeto Final"
-            ],
-            skills: ["HTML5", "CSS3", "Responsivo", "Flexbox", "Grid"]
-        },
-        {
-            id: "javascript-moderno",
-            title: "JavaScript Moderno ES6+",
-            category: "frontend",
-            instructor: "Carlos Oliveira",
-            duration: "35 horas",
-            level: "Intermediário",
-            rating: 4.9,
-            students: 892,
-            price: "R$ 97,00",
-            description: "Domine JavaScript moderno com ES6+, async/await, módulos e as melhores práticas de desenvolvimento.",
-            modules: [
-                "Fundamentos JavaScript",
-                "ES6+ Features",
-                "Async/Await",
-                "Módulos ES6",
-                "Programação Funcional",
-                "Projeto E-commerce"
-            ],
-            skills: ["JavaScript", "ES6+", "Async/Await", "Módulos", "Promises"]
-        },
-        {
-            id: "react-avancado",
-            title: "React.js Avançado",
-            category: "frontend",
-            instructor: "Ana Costa",
+            id: "js-avancado",
+            title: "JavaScript Avançado e ES6+",
+            category: "desenvolvimento",
+            instructor: "Carlos Mendes",
             duration: "40 horas",
             level: "Avançado",
-            rating: 4.7,
-            students: 567,
-            price: "R$ 147,00",
-            description: "Aprenda React.js avançado com hooks, context API, performance optimization e padrões de projeto.",
+            rating: 4.8,
+            students: 1247,
+            price: "R$ 297,00",
+            description: "Domine JavaScript moderno com ES6+, async/await, módulos e padrões avançados de programação.",
             modules: [
-                "Hooks Avançados",
-                "Context API",
-                "Performance Optimization",
-                "Padrões de Projeto",
-                "Testing com Jest",
-                "Projeto Dashboard"
+                "ES6+ Features e Sintaxe Moderna",
+                "Programação Assíncrona com Promises",
+                "Módulos ES6 e Bundlers",
+                "Padrões de Design em JavaScript",
+                "Testes e Debugging Avançado"
             ],
-            skills: ["React", "Hooks", "Context API", "Performance", "Testing"]
+            skills: ["JavaScript", "ES6+", "Async Programming", "Modules", "Testing"]
         },
         {
-            id: "nodejs-backend",
-            title: "Node.js - Backend Completo",
-            category: "backend",
-            instructor: "Pedro Silva",
-            duration: "45 horas",
+            id: "react-completo",
+            title: "React.js Completo: Do Básico ao Avançado",
+            category: "desenvolvimento",
+            instructor: "Ana Silva",
+            duration: "60 horas",
             level: "Intermediário",
-            rating: 4.6,
-            students: 423,
-            price: "R$ 127,00",
-            description: "Desenvolva APIs robustas com Node.js, Express, MongoDB e autenticação JWT.",
+            rating: 4.9,
+            students: 2156,
+            price: "R$ 397,00",
+            description: "Aprenda React.js desde os conceitos fundamentais até técnicas avançadas de otimização.",
             modules: [
-                "Fundamentos Node.js",
-                "Express Framework",
-                "MongoDB e Mongoose",
-                "Autenticação JWT",
-                "Validação de Dados",
-                "Deploy e Produção"
+                "Fundamentos do React e JSX",
+                "Hooks e Componentes Funcionais",
+                "Gerenciamento de Estado com Context e Redux",
+                "Roteamento e Navegação",
+                "Testes e Deploy em Produção"
             ],
-            skills: ["Node.js", "Express", "MongoDB", "JWT", "APIs"]
+            skills: ["React", "JavaScript", "JSX", "Hooks", "Redux", "Testing"]
         },
         {
-            id: "react-native",
-            title: "React Native - Apps Mobile",
-            category: "mobile",
-            instructor: "Fernanda Lima",
+            id: "node-express",
+            title: "Node.js e Express.js para Backend",
+            category: "desenvolvimento",
+            instructor: "Roberto Lima",
             duration: "50 horas",
             level: "Intermediário",
-            rating: 4.5,
-            students: 298,
-            price: "R$ 167,00",
-            description: "Crie aplicativos mobile nativos para iOS e Android usando React Native.",
+            rating: 4.7,
+            students: 892,
+            price: "R$ 347,00",
+            description: "Construa APIs robustas e escaláveis com Node.js, Express e MongoDB.",
             modules: [
-                "Introdução React Native",
-                "Navegação e Roteamento",
-                "APIs Nativas",
-                "Estado e Gerenciamento",
-                "Performance e Otimização",
-                "Publicação nas Stores"
+                "Fundamentos do Node.js e NPM",
+                "Express.js e Middleware",
+                "Autenticação e Autorização",
+                "Integração com Bancos de Dados",
+                "Deploy e Monitoramento"
             ],
-            skills: ["React Native", "Mobile", "iOS", "Android", "APIs"]
+            skills: ["Node.js", "Express", "JavaScript", "APIs", "MongoDB"]
+        },
+        {
+            id: "scrum-master",
+            title: "Certificação Scrum Master",
+            category: "gestao",
+            instructor: "Patrícia Santos",
+            duration: "35 horas",
+            level: "Intermediário",
+            rating: 4.8,
+            students: 567,
+            price: "R$ 497,00",
+            description: "Prepare-se para a certificação Scrum Master com metodologias ágeis práticas.",
+            modules: [
+                "Fundamentos do Scrum Framework",
+                "Papéis e Responsabilidades",
+                "Cerimônias e Artefatos",
+                "Implementação e Transformação",
+                "Preparação para Certificação"
+            ],
+            skills: ["Scrum", "Agile", "Project Management", "Leadership", "Team Facilitation"]
+        },
+        {
+            id: "python-dados",
+            title: "Python para Ciência de Dados",
+            category: "dados",
+            instructor: "Dr. Fernando Costa",
+            duration: "45 horas",
+            level: "Intermediário",
+            rating: 4.9,
+            students: 1345,
+            price: "R$ 447,00",
+            description: "Análise de dados, visualização e machine learning com Python e bibliotecas especializadas.",
+            modules: [
+                "Python para Análise de Dados",
+                "Pandas, NumPy e Matplotlib",
+                "Visualização de Dados Avançada",
+                "Machine Learning Básico",
+                "Projetos Práticos de Análise"
+            ],
+            skills: ["Python", "Pandas", "NumPy", "Data Analysis", "Machine Learning"]
         }
     ],
 
     // Instrutores
     instructors: [
         {
-            id: "maria-santos",
-            name: "Maria Santos",
-            role: "Senior Frontend Developer",
+            id: "carlos-mendes",
+            name: "Carlos Mendes",
+            title: "Senior Frontend Developer",
             company: "Velotax",
-            experience: "8 anos",
-            specialties: ["HTML", "CSS", "JavaScript", "React"],
-            avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=120&h=120&fit=crop&crop=face",
+            experience: "8+ anos",
+            expertise: ["JavaScript", "React", "Vue.js", "TypeScript"],
+            avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
             rating: 4.9,
-            courses: 12,
-            students: 5000
+            students: 3247
         },
         {
-            id: "carlos-oliveira",
-            name: "Carlos Oliveira",
-            role: "Full Stack Developer",
+            id: "ana-silva",
+            name: "Ana Silva",
+            title: "Full Stack Developer",
             company: "Velotax",
-            experience: "10 anos",
-            specialties: ["JavaScript", "Node.js", "React", "Python"],
-            avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=face",
+            experience: "6+ anos",
+            expertise: ["React", "Node.js", "Python", "AWS"],
+            avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
             rating: 4.8,
-            courses: 8,
-            students: 3500
+            students: 2156
         },
         {
-            id: "ana-costa",
-            name: "Ana Costa",
-            role: "React Specialist",
+            id: "roberto-lima",
+            name: "Roberto Lima",
+            title: "Backend Architect",
             company: "Velotax",
-            experience: "6 anos",
-            specialties: ["React", "TypeScript", "Testing", "Performance"],
-            avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=120&h=120&fit=crop&crop=face",
+            experience: "10+ anos",
+            expertise: ["Node.js", "Python", "Microservices", "Cloud"],
+            avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
             rating: 4.7,
-            courses: 6,
-            students: 2200
+            students: 1892
         }
     ],
 
     // Certificados
     certificates: [
         {
-            id: "html-css-cert",
-            courseId: "html-css-basico",
-            title: "HTML5 e CSS3 - Fundamentos",
-            issuedDate: "2024-11-15",
-            expiryDate: null,
+            id: "js-avancado-cert",
+            courseId: "js-avancado",
+            title: "JavaScript Avançado e ES6+",
+            issuedDate: "2024-01-15",
+            validUntil: "2026-01-15",
             grade: "A+",
-            instructor: "Maria Santos",
-            skills: ["HTML5", "CSS3", "Responsivo", "Flexbox", "Grid"]
+            skills: ["JavaScript", "ES6+", "Async Programming", "Modules"],
+            certificateUrl: "#"
         },
         {
-            id: "js-basico-cert",
-            courseId: "javascript-basico",
-            title: "JavaScript Básico",
-            issuedDate: "2024-10-20",
-            expiryDate: null,
-            grade: "A",
-            instructor: "Carlos Oliveira",
-            skills: ["JavaScript", "ES6", "DOM", "Events", "AJAX"]
+            id: "react-completo-cert",
+            courseId: "react-completo",
+            title: "React.js Completo",
+            issuedDate: "2024-02-20",
+            validUntil: "2026-02-20",
+            grade: "A+",
+            skills: ["React", "JavaScript", "Hooks", "Redux"],
+            certificateUrl: "#"
         }
     ],
 
     // Configurações da Plataforma
     platform: {
         features: [
-            "Aprendizado em ritmo próprio",
-            "Certificados reconhecidos",
-            "Projetos práticos",
-            "Suporte da comunidade",
-            "Acesso vitalício aos cursos",
-            "Atualizações gratuitas"
+            "Aprendizado personalizado com IA",
+            "Projetos práticos e hands-on",
+            "Comunidade ativa de desenvolvedores",
+            "Suporte técnico especializado",
+            "Certificados reconhecidos pelo mercado"
         ],
-        languages: ["pt-BR", "en", "es"],
+        languages: ["Português", "Inglês"],
         themes: ["light", "dark", "auto"],
         notifications: {
             email: true,
@@ -253,44 +245,44 @@ const VelotaxAcademyConfig = {
         }
     },
 
-    // Métricas e Estatísticas
+    // Estatísticas da Academia
     stats: {
-        totalStudents: 15000,
-        totalCourses: 50,
-        totalInstructors: 15,
-        completionRate: 78,
-        satisfactionRate: 4.7,
-        countries: 25
+        totalStudents: 15420,
+        totalCourses: 35,
+        completionRate: 87.3,
+        averageRating: 4.8,
+        totalInstructors: 12,
+        activeProjects: 89
     },
 
     // Configurações de UI
     ui: {
         colors: {
-            primary: "#667eea",
-            secondary: "#764ba2",
+            primary: "#1e40af",
+            secondary: "#3b82f6",
+            accent: "#f59e0b",
             success: "#10b981",
             warning: "#f59e0b",
             error: "#ef4444",
-            info: "#3b82f6"
+            background: "#f8fafc",
+            surface: "#ffffff",
+            text: "#1e293b"
         },
         animations: {
-            enabled: true,
-            duration: 300,
+            duration: "0.3s",
             easing: "cubic-bezier(0.4, 0, 0.2, 1)"
         },
         responsive: {
-            breakpoints: {
-                mobile: 768,
-                tablet: 1024,
-                desktop: 1200
-            }
+            mobile: "768px",
+            tablet: "1024px",
+            desktop: "1200px"
         }
     }
 };
 
-// Exportar configuração
+// Export para diferentes ambientes
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = VelotaxAcademyConfig;
-} else {
+} else if (typeof window !== 'undefined') {
     window.VelotaxAcademyConfig = VelotaxAcademyConfig;
 }

@@ -1,22 +1,40 @@
-// Sistema Premium - JavaScript Exclusivo
+// Velotax Academy - Sistema Premium
 class PremiumSystem {
     constructor() {
-        this.isSidebarOpen = true;
-        this.currentSection = 'dashboard';
+        this.currentTheme = 'light';
         this.init();
     }
 
     init() {
         this.setupEventListeners();
-        this.setupSidebarToggle();
         this.loadUserPreferences();
         this.initializeAnimations();
-        this.showToast('Velotax Academy carregada com sucesso!', 'success');
+        this.setupParallaxEffects();
+        this.setupRippleEffects();
+        this.preloadCriticalResources();
+        
+        // Mostrar toast de boas-vindas
+        setTimeout(() => {
+            this.showToast('Bem-vindo à Velotax Academy! 🎓', 'success');
+        }, 1000);
     }
 
     setupEventListeners() {
-        // Navegação da sidebar
-        document.querySelectorAll('.nav-link').forEach(link => {
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => this.toggleTheme());
+        }
+
+        // Sidebar toggle
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        if (sidebarToggle) {
+            sidebarToggle.addEventListener('click', () => this.toggleSidebar());
+        }
+
+        // Navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const section = link.getAttribute('data-section');
@@ -24,168 +42,119 @@ class PremiumSystem {
             });
         });
 
-        // Toggle de tema
-        const themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) {
-            themeToggle.addEventListener('click', () => this.toggleTheme());
-        }
-
-        // Ações rápidas
-        document.querySelectorAll('.action-card').forEach(card => {
+        // Quick actions
+        const actionCards = document.querySelectorAll('.action-card');
+        actionCards.forEach(card => {
             card.addEventListener('click', () => this.handleQuickAction(card));
         });
 
-        // Botões de gráfico
-        document.querySelectorAll('.chart-btn').forEach(button => {
-            button.addEventListener('click', () => this.handleChartButton(button));
-        });
-
-        // Ações de membros da equipe (agora certificados)
-        document.querySelectorAll('.btn-icon').forEach(button => {
+        // Member actions
+        const memberButtons = document.querySelectorAll('.member-action');
+        memberButtons.forEach(button => {
             button.addEventListener('click', () => this.handleMemberAction(button));
         });
 
-        // Tecla Escape para fechar sidebar
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                this.closeSidebar();
-            }
+        // Chart buttons
+        const chartButtons = document.querySelectorAll('.chart-button');
+        chartButtons.forEach(button => {
+            button.addEventListener('click', () => this.handleChartButton(button));
         });
-
-        // Preload de recursos críticos
-        this.preloadCriticalResources();
-    }
-
-    setupSidebarToggle() {
-        const sidebarToggle = document.getElementById('sidebar-toggle');
-        if (sidebarToggle) {
-            sidebarToggle.addEventListener('click', () => this.toggleSidebar());
-        }
     }
 
     toggleSidebar() {
-        if (this.isSidebarOpen) {
-            this.closeSidebar();
-        } else {
-            this.openSidebar();
-        }
-    }
-
-    openSidebar() {
         const sidebar = document.querySelector('.sidebar');
         const mainContent = document.querySelector('.main-content');
         
         if (sidebar && mainContent) {
-            sidebar.classList.add('active');
-            mainContent.style.marginLeft = '280px';
-            this.isSidebarOpen = true;
-            this.showToast('Sidebar aberta', 'info');
-        }
-    }
-
-    closeSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        const mainContent = document.querySelector('.main-content');
-        
-        if (sidebar && mainContent) {
-            sidebar.classList.remove('active');
-            mainContent.style.marginLeft = '0';
-            this.isSidebarOpen = false;
-            this.showToast('Sidebar fechada', 'info');
+            sidebar.classList.toggle('collapsed');
+            mainContent.classList.toggle('expanded');
         }
     }
 
     navigateToSection(section) {
         // Remover seção ativa anterior
-        const previousSection = document.querySelector('.content-section.active');
-        if (previousSection) {
-            previousSection.classList.remove('active');
-        }
+        const activeSection = document.querySelector('.content-section.active');
+        const activeLink = document.querySelector('.nav-link.active');
+        
+        if (activeSection) activeSection.classList.remove('active');
+        if (activeLink) activeLink.classList.remove('active');
 
         // Ativar nova seção
-        const newSection = document.getElementById(section);
-        if (newSection) {
-            newSection.classList.add('active');
-            this.currentSection = section;
+        const sectionElement = document.getElementById(section);
+        const sectionLink = document.querySelector(`[data-section="${section}"]`);
+        
+        if (sectionElement) {
+            sectionElement.classList.add('active');
             this.updateBreadcrumb(section);
             this.animateSectionEntry(section);
         }
-
-        // Atualizar navegação ativa
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
-        });
         
-        const activeLink = document.querySelector(`[data-section="${section}"]`);
-        if (activeLink) {
-            activeLink.classList.add('active');
-        }
-
-        // Fechar sidebar em dispositivos móveis
-        if (window.innerWidth <= 1024) {
-            this.closeSidebar();
+        if (sectionLink) {
+            sectionLink.classList.add('active');
         }
     }
 
     updateBreadcrumb(section) {
-        const breadcrumb = document.querySelector('.breadcrumb span');
-        if (breadcrumb) {
-            const sectionNames = {
-                'dashboard': 'Dashboard',
-                'cursos': 'Meus Cursos',
-                'catalogo': 'Catálogo',
-                'certificados': 'Certificados',
-                'comunidade': 'Comunidade',
-                'perfil': 'Meu Perfil'
-            };
-            breadcrumb.textContent = sectionNames[section] || 'Dashboard';
-        }
+        const breadcrumb = document.querySelector('.breadcrumb');
+        if (!breadcrumb) return;
+
+        const sectionNames = {
+            'dashboard': 'Dashboard',
+            'cursos': 'Meus Cursos',
+            'catalogo': 'Catálogo',
+            'certificados': 'Certificados',
+            'comunidade': 'Comunidade',
+            'perfil': 'Meu Perfil'
+        };
+
+        const sectionName = sectionNames[section] || 'Dashboard';
+        breadcrumb.textContent = sectionName;
     }
 
     animateSectionEntry(section) {
         const sectionElement = document.getElementById(section);
-        if (sectionElement) {
-            sectionElement.style.opacity = '0';
-            sectionElement.style.transform = 'translateY(30px)';
-            
-            setTimeout(() => {
-                sectionElement.style.transition = 'all 0.6s ease-out';
-                sectionElement.style.opacity = '1';
-                sectionElement.style.transform = 'translateY(0)';
-            }, 100);
-        }
+        if (!sectionElement) return;
+
+        sectionElement.style.opacity = '0';
+        sectionElement.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+            sectionElement.style.transition = 'all 0.5s ease';
+            sectionElement.style.opacity = '1';
+            sectionElement.style.transform = 'translateY(0)';
+        }, 100);
     }
 
     toggleTheme() {
-        const body = document.body;
-        const currentTheme = body.getAttribute('data-theme');
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        const newTheme = this.currentTheme === 'light' ? 'dark' : 'light';
+        this.currentTheme = newTheme;
         
-        body.setAttribute('data-theme', newTheme);
-        localStorage.setItem('premium-system-theme', newTheme);
+        document.body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('velotax-academy-theme', newTheme);
         
+        // Atualizar ícone do toggle
         const themeToggle = document.getElementById('theme-toggle');
         if (themeToggle) {
             const icon = themeToggle.querySelector('i');
             if (icon) {
-                icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+                icon.className = newTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
             }
         }
         
-        this.showToast(`Tema ${newTheme === 'dark' ? 'escuro' : 'claro'} ativado`, 'success');
+        this.showToast(`Tema ${newTheme === 'light' ? 'claro' : 'escuro'} ativado!`, 'info');
     }
 
     loadUserPreferences() {
-        const savedTheme = localStorage.getItem('premium-system-theme');
-        if (savedTheme) {
-            document.body.setAttribute('data-theme', savedTheme);
-            
-            const themeToggle = document.getElementById('theme-toggle');
-            if (themeToggle) {
-                const icon = themeToggle.querySelector('i');
-                if (icon) {
-                    icon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-                }
+        const savedTheme = localStorage.getItem('velotax-academy-theme') || 'light';
+        this.currentTheme = savedTheme;
+        document.body.setAttribute('data-theme', savedTheme);
+        
+        // Atualizar ícone do toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        if (themeToggle) {
+            const icon = themeToggle.querySelector('i');
+            if (icon) {
+                icon.className = savedTheme === 'light' ? 'fas fa-moon' : 'fas fa-sun';
             }
         }
     }
@@ -193,63 +162,46 @@ class PremiumSystem {
     initializeAnimations() {
         const animatedElements = document.querySelectorAll('.stat-card, .action-card, .chart-card, .project-card, .team-member');
         
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-
-        animatedElements.forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.6s ease-out';
-            observer.observe(el);
+        animatedElements.forEach((element, index) => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                element.style.transition = 'all 0.6s ease';
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }, index * 100);
         });
     }
 
     handleQuickAction(card) {
-        const actionText = card.querySelector('span').textContent;
-        this.showToast(`Ação "${actionText}" executada!`, 'success');
-        
-        // Simular ação
+        const actionText = card.querySelector('span')?.textContent || 'Ação';
+        this.showToast(`Executando: ${actionText}`, 'info');
         this.simulateAction(actionText, 2000);
     }
 
     handleMemberAction(button) {
-        const action = button.getAttribute('title') || 'ver perfil';
-        this.showToast(`Ação "${action}" executada!`, 'info');
+        const action = button.getAttribute('title') || 'Ação';
+        this.showToast(`Ação executada: ${action}`, 'success');
     }
 
     handleChartButton(button) {
-        // Remover classe ativa de todos os botões
-        button.parentElement.querySelectorAll('.chart-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
-        
-        // Adicionar classe ativa ao botão clicado
-        button.classList.add('active');
-        
-        const buttonText = button.textContent;
-        this.showToast(`Período "${buttonText}" selecionado`, 'info');
+        const action = button.textContent || 'Ação';
+        this.showToast(`Função ${action} ativada`, 'info');
     }
 
     simulateAction(action, duration) {
         const progressBar = document.createElement('div');
+        progressBar.className = 'action-progress';
         progressBar.style.cssText = `
             position: fixed;
             top: 0;
             left: 0;
-            width: 0%;
             height: 4px;
             background: var(--primary-gradient);
             z-index: 10000;
-            transition: width 0.3s ease;
+            transition: width ${duration}ms ease;
+            width: 0%;
         `;
         
         document.body.appendChild(progressBar);
@@ -260,6 +212,7 @@ class PremiumSystem {
         
         setTimeout(() => {
             document.body.removeChild(progressBar);
+            this.showToast(`${action} concluído com sucesso!`, 'success');
         }, duration);
     }
 
@@ -282,9 +235,20 @@ class PremiumSystem {
 // Sistema de Notificações
 class NotificationSystem {
     constructor() {
-        this.container = document.getElementById('toast-container');
         this.toastQueue = [];
         this.isProcessing = false;
+        this.init();
+    }
+
+    init() {
+        this.createToastContainer();
+    }
+
+    createToastContainer() {
+        const container = document.createElement('div');
+        container.id = 'toast-container';
+        container.className = 'toast-container';
+        document.body.appendChild(container);
     }
 
     showToast(message, type = 'info') {
@@ -298,129 +262,137 @@ class NotificationSystem {
 
     createToast(message, type) {
         const toast = document.createElement('div');
-        toast.className = `toast ${type}`;
-        
-        const icon = this.getIconForType(type);
-        
+        toast.className = `toast toast-${type}`;
         toast.innerHTML = `
-            <div style="display: flex; align-items: center; gap: 10px;">
-                <i class="${icon}" style="font-size: 1.2rem;"></i>
-                <span>${message}</span>
+            <div class="toast-icon">
+                <i class="${this.getIconForType(type)}"></i>
             </div>
+            <div class="toast-message">${message}</div>
+            <button class="toast-close">
+                <i class="fas fa-times"></i>
+            </button>
         `;
+        
+        // Auto-remover após 5 segundos
+        setTimeout(() => {
+            this.removeToast(toast);
+        }, 5000);
         
         return toast;
     }
 
     getIconForType(type) {
         const icons = {
-            'success': 'fas fa-check-circle',
-            'error': 'fas fa-exclamation-circle',
-            'warning': 'fas fa-exclamation-triangle',
-            'info': 'fas fa-info-circle'
+            success: 'fas fa-check-circle',
+            error: 'fas fa-exclamation-circle',
+            warning: 'fas fa-exclamation-triangle',
+            info: 'fas fa-info-circle'
         };
         return icons[type] || icons.info;
     }
 
-    async processQueue() {
+    processQueue() {
         if (this.toastQueue.length === 0) {
             this.isProcessing = false;
             return;
         }
-
+        
         this.isProcessing = true;
         const toast = this.toastQueue.shift();
+        this.showToastElement(toast);
+    }
+
+    showToastElement(toast) {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
         
-        this.container.appendChild(toast);
+        container.appendChild(toast);
+        this.animateIn(toast);
         
-        // Animar entrada
-        await this.animateIn(toast);
+        // Adicionar evento de fechar
+        const closeBtn = toast.querySelector('.toast-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => this.removeToast(toast));
+        }
         
-        // Aguardar e remover
-        setTimeout(async () => {
-            await this.animateOut(toast);
+        // Processar próximo toast após animação
+        setTimeout(() => {
+            this.processQueue();
+        }, 300);
+    }
+
+    removeToast(toast) {
+        this.animateOut(toast, () => {
             if (toast.parentNode) {
                 toast.parentNode.removeChild(toast);
             }
-            this.processQueue();
-        }, 4000);
+        });
     }
 
     animateIn(toast) {
-        return new Promise(resolve => {
-            toast.style.transform = 'translateX(100%)';
-            setTimeout(() => {
-                toast.style.transform = 'translateX(0)';
-                resolve();
-            }, 50);
-        });
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100%)';
+        
+        setTimeout(() => {
+            toast.style.transition = 'all 0.3s ease';
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateX(0)';
+        }, 10);
     }
 
-    animateOut(toast) {
-        return new Promise(resolve => {
-            toast.style.transform = 'translateX(100%)';
-            setTimeout(resolve, 300);
-        });
+    animateOut(toast, callback) {
+        toast.style.transition = 'all 0.3s ease';
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100%)';
+        
+        setTimeout(callback, 300);
     }
 }
 
-// Inicializar sistema quando DOM estiver pronto
-document.addEventListener('DOMContentLoaded', () => {
-    // Inicializar sistema de notificações
-    window.notificationSystem = new NotificationSystem();
-    
-    // Inicializar sistema principal
-    window.premiumSystem = new PremiumSystem();
-    
-    // Remover loading screen após 3 segundos
-    setTimeout(() => {
-        const loadingScreen = document.getElementById('loading-screen');
-        if (loadingScreen) {
-            loadingScreen.style.opacity = '0';
-            setTimeout(() => {
-                loadingScreen.style.display = 'none';
-            }, 800);
-        }
-    }, 3000);
-
-    // Efeitos adicionais
-    setupParallaxEffects();
-    setupRippleEffects();
-});
-
-// Efeitos de Parallax
+// Efeitos Parallax
 function setupParallaxEffects() {
-    const parallaxElements = document.querySelectorAll('.stat-card, .action-card, .chart-card, .project-card, .team-member');
+    const cards = document.querySelectorAll('.stat-card, .action-card, .chart-card');
     
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
         
-        parallaxElements.forEach((element, index) => {
-            const speed = 0.1 + (index * 0.02);
-            const yPos = -(scrolled * speed);
-            element.style.transform = `translateY(${yPos}px)`;
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
         });
     });
 }
 
-// Efeito Ripple nos botões
+// Efeitos Ripple
 function setupRippleEffects() {
-    document.addEventListener('click', (e) => {
-        if (e.target.tagName === 'BUTTON' || e.target.closest('button')) {
-            const button = e.target.tagName === 'BUTTON' ? e.target : e.target.closest('button');
+    const buttons = document.querySelectorAll('.btn, .action-card, .nav-link');
+    
+    buttons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const ripple = document.createElement('span');
             const rect = button.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
             const x = e.clientX - rect.left - size / 2;
             const y = e.clientY - rect.top - size / 2;
             
-            const ripple = document.createElement('span');
             ripple.style.cssText = `
                 position: absolute;
                 width: ${size}px;
                 height: ${size}px;
                 left: ${x}px;
                 top: ${y}px;
-                background: rgba(255, 255, 255, 0.3);
+                background: rgba(59, 130, 246, 0.3);
                 border-radius: 50%;
                 transform: scale(0);
                 animation: ripple 0.6s linear;
@@ -428,7 +400,6 @@ function setupRippleEffects() {
             `;
             
             button.style.position = 'relative';
-            button.style.overflow = 'hidden';
             button.appendChild(ripple);
             
             setTimeout(() => {
@@ -436,18 +407,46 @@ function setupRippleEffects() {
                     ripple.parentNode.removeChild(ripple);
                 }
             }, 600);
-        }
+        });
     });
 }
 
-// Adicionar CSS para animação ripple
-const rippleStyle = document.createElement('style');
-rippleStyle.textContent = `
+// Inicialização quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar sistema de notificações
+    window.notificationSystem = new NotificationSystem();
+    
+    // Inicializar sistema principal
+    window.premiumSystem = new PremiumSystem();
+    
+    // Remover tela de carregamento
+    setTimeout(() => {
+        const loadingScreen = document.getElementById('loading-screen');
+        if (loadingScreen) {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.style.display = 'none';
+            }, 500);
+        }
+    }, 1500);
+    
+    // Configurar efeitos
+    setupParallaxEffects();
+    setupRippleEffects();
+});
+
+// Adicionar animação de ripple ao CSS
+const style = document.createElement('style');
+style.textContent = `
     @keyframes ripple {
         to {
             transform: scale(4);
             opacity: 0;
         }
     }
+    
+    .action-progress {
+        box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3);
+    }
 `;
-document.head.appendChild(rippleStyle);
+document.head.appendChild(style);
