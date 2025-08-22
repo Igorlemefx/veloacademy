@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESTE LOCAL - Sistema Premium</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .test-info {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            z-index: 10000;
+            font-family: 'Poppins', sans-serif;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        ✅ TESTE LOCAL FUNCIONANDO!<br>
+        Sistema Premium Carregado
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="logo-circle">
+                    <i class="fas fa-crown"></i>
+                </div>
+            </div>
+            <div class="loading-text">Carregando Sistema Premium...</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h2>Sistema Premium</h2>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#analytics" class="nav-link" data-section="analytics">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link" data-section="projects">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Projetos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#team" class="nav-link" data-section="team">
+                        <i class="fas fa-users"></i>
+                        <span>Equipe</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#settings" class="nav-link" data-section="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="profile-avatar">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face" alt="João Silva">
+                </div>
+                <div class="profile-info">
+                    <h4>João Silva</h4>
+                    <p>Administrador</p>
+                </div>
+                <button class="profile-menu">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="breadcrumb">
+                    <span>Dashboard</span>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" title="Notificações">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="action-btn" title="Mensagens">
+                        <i class="fas fa-envelope"></i>
+                        <span class="badge">5</span>
+                    </button>
+                    <button class="theme-toggle" id="theme-toggle" title="Alternar Tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="section-header">
+                    <div class="header-content">
+                        <h1>Bem-vindo de volta, João! 👋</h1>
+                        <p>Aqui está o que está acontecendo hoje</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Novo Projeto
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Overview -->
+                <div class="stats-overview">
+                    <div class="stat-card primary">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">2,847</div>
+                            <div class="stat-label">Usuários Ativos</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +12.5%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card success">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">$45,289</div>
+                            <div class="stat-label">Receita Mensal</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +8.2%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card warning">
+                        <div class="stat-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">156</div>
+                            <div class="stat-label">Projetos Ativos</div>
+                            <div class="stat-change negative">
+                                <i class="fas fa-arrow-down"></i>
+                                -3.1%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card info">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">98.7%</div>
+                            <div class="stat-label">Uptime</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +0.3%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions-section">
+                    <h3>Ações Rápidas</h3>
+                    <div class="actions-grid">
+                        <button class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <span>Novo Projeto</span>
+                        </button>
+                        <button class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <span>Adicionar Usuário</span>
+                        </button>
+                        <button class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <span>Gerar Relatório</span>
+                        </button>
+                        <button class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <span>Configurar Alertas</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="./js/script.js"></script>
+</body>
+</html>

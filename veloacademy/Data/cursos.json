@@ -1,0 +1,132 @@
+[
+    {
+        "id": 1,
+        "title": "Introdução ao JavaScript",
+        "description": "Aprenda os fundamentos do JavaScript, a linguagem de programação essencial para a web.",
+        "category": "Programação",
+        "duration": "8 horas",
+        "level": "Iniciante",
+        "instructor": "Prof. Silva",
+        "rating": 4.8,
+        "enrolled": 1250,
+        "modules": [
+            { "name": "Variáveis e Tipos de Dados", "link": "#", "completed": false, "duration": "45 min" },
+            { "name": "Operadores e Expressões", "link": "#", "completed": false, "duration": "60 min" },
+            { "name": "Estruturas de Controle", "link": "#", "completed": false, "duration": "90 min" },
+            { "name": "Funções", "link": "#", "completed": false, "duration": "75 min" }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "CSS Avançado",
+        "description": "Domine técnicas avançadas de CSS para criar layouts responsivos e animações impressionantes.",
+        "category": "Design Web",
+        "duration": "6 horas",
+        "level": "Intermediário",
+        "instructor": "Prof. Santos",
+        "rating": 4.6,
+        "enrolled": 890,
+        "modules": [
+            { "name": "Flexbox e Grid", "link": "#", "completed": false, "duration": "90 min" },
+            { "name": "Animações e Transições", "link": "#", "completed": false, "duration": "60 min" },
+            { "name": "Pré-processadores CSS (Sass/Less)", "link": "#", "completed": false, "duration": "90 min" }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "HTML Semântico",
+        "description": "Entenda a importância do HTML semântico para acessibilidade e SEO.",
+        "category": "Desenvolvimento Web",
+        "duration": "4 horas",
+        "level": "Iniciante",
+        "instructor": "Prof. Oliveira",
+        "rating": 4.7,
+        "enrolled": 1100,
+        "modules": [
+            { "name": "Estrutura de Documentos", "link": "#", "completed": false, "duration": "60 min" },
+            { "name": "Novas Tags HTML5", "link": "#", "completed": false, "duration": "90 min" },
+            { "name": "Acessibilidade", "link": "#", "completed": false, "duration": "90 min" }
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Introdução ao React",
+        "description": "Construa interfaces de usuário modernas e reativas com a biblioteca React.",
+        "category": "Frameworks Frontend",
+        "duration": "12 horas",
+        "level": "Intermediário",
+        "instructor": "Prof. Costa",
+        "rating": 4.9,
+        "enrolled": 2100,
+        "modules": [
+            { "name": "Componentes e Props", "link": "#", "completed": false, "duration": "120 min" },
+            { "name": "State e Ciclo de Vida", "link": "#", "completed": false, "duration": "150 min" },
+            { "name": "Hooks", "link": "#", "completed": false, "duration": "180 min" }
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Node.js para Backend",
+        "description": "Desenvolva aplicações backend robustas e escaláveis com Node.js e Express.",
+        "category": "Backend",
+        "duration": "15 horas",
+        "level": "Avançado",
+        "instructor": "Prof. Ferreira",
+        "rating": 4.7,
+        "enrolled": 750,
+        "modules": [
+            { "name": "Fundamentos do Node.js", "link": "#", "completed": false, "duration": "120 min" },
+            { "name": "Express.js Framework", "link": "#", "completed": false, "duration": "150 min" },
+            { "name": "APIs RESTful", "link": "#", "completed": false, "duration": "180 min" },
+            { "name": "Autenticação e Segurança", "link": "#", "completed": false, "duration": "120 min" }
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Python para Data Science",
+        "description": "Aprenda Python para análise de dados, machine learning e visualização.",
+        "category": "Data Science",
+        "duration": "20 horas",
+        "level": "Intermediário",
+        "instructor": "Prof. Rodrigues",
+        "rating": 4.8,
+        "enrolled": 1650,
+        "modules": [
+            { "name": "Pandas e NumPy", "link": "#", "completed": false, "duration": "180 min" },
+            { "name": "Visualização com Matplotlib", "link": "#", "completed": false, "duration": "120 min" },
+            { "name": "Machine Learning Básico", "link": "#", "completed": false, "duration": "240 min" }
+        ]
+    },
+    {
+        "id": 7,
+        "title": "DevOps e CI/CD",
+        "description": "Implemente práticas de DevOps e pipelines de integração contínua.",
+        "category": "DevOps",
+        "duration": "18 horas",
+        "level": "Avançado",
+        "instructor": "Prof. Lima",
+        "rating": 4.6,
+        "enrolled": 520,
+        "modules": [
+            { "name": "Git e GitHub", "link": "#", "completed": false, "duration": "90 min" },
+            { "name": "Docker e Containers", "link": "#", "completed": false, "duration": "150 min" },
+            { "name": "Jenkins e GitHub Actions", "link": "#", "completed": false, "duration": "180 min" }
+        ]
+    },
+    {
+        "id": 8,
+        "title": "UX/UI Design",
+        "description": "Crie experiências de usuário excepcionais com princípios de design moderno.",
+        "category": "Design",
+        "duration": "14 horas",
+        "level": "Intermediário",
+        "instructor": "Prof. Almeida",
+        "rating": 4.5,
+        "enrolled": 980,
+        "modules": [
+            { "name": "Princípios de Design", "link": "#", "completed": false, "duration": "120 min" },
+            { "name": "Figma e Prototipagem", "link": "#", "completed": false, "duration": "180 min" },
+            { "name": "Testes de Usabilidade", "link": "#", "completed": false, "duration": "120 min" }
+        ]
+    }
+]

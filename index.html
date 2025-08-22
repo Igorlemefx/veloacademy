@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Premium - Design Exclusivo</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <div class="logo-circle">
+                    <i class="fas fa-crown"></i>
+                </div>
+            </div>
+            <div class="loading-text">Carregando Sistema Premium...</div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h2>Sistema Premium</h2>
+            </div>
+        </div>
+
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#dashboard" class="nav-link active" data-section="dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#analytics" class="nav-link" data-section="analytics">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link" data-section="projects">
+                        <i class="fas fa-project-diagram"></i>
+                        <span>Projetos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#team" class="nav-link" data-section="team">
+                        <i class="fas fa-users"></i>
+                        <span>Equipe</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#settings" class="nav-link" data-section="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="profile-avatar">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face" alt="João Silva">
+                </div>
+                <div class="profile-info">
+                    <h4>João Silva</h4>
+                    <p>Administrador</p>
+                </div>
+                <button class="profile-menu">
+                    <i class="fas fa-ellipsis-v"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="sidebar-toggle" id="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="breadcrumb">
+                    <span>Dashboard</span>
+                </div>
+            </div>
+            
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" title="Notificações">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge">3</span>
+                    </button>
+                    <button class="action-btn" title="Mensagens">
+                        <i class="fas fa-envelope"></i>
+                        <span class="badge">5</span>
+                    </button>
+                    <button class="theme-toggle" id="theme-toggle" title="Alternar Tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="section-header">
+                    <div class="header-content">
+                        <h1>Bem-vindo de volta, João! 👋</h1>
+                        <p>Aqui está o que está acontecendo hoje</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-primary">
+                            <i class="fas fa-plus"></i>
+                            Novo Projeto
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Stats Overview -->
+                <div class="stats-overview">
+                    <div class="stat-card primary">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">2,847</div>
+                            <div class="stat-label">Usuários Ativos</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +12.5%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card success">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">$45,289</div>
+                            <div class="stat-label">Receita Mensal</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +8.2%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card warning">
+                        <div class="stat-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">156</div>
+                            <div class="stat-label">Projetos Ativos</div>
+                            <div class="stat-change negative">
+                                <i class="fas fa-arrow-down"></i>
+                                -3.1%
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card info">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-number">98.7%</div>
+                            <div class="stat-label">Uptime</div>
+                            <div class="stat-change positive">
+                                <i class="fas fa-arrow-up"></i>
+                                +0.3%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions-section">
+                    <h3>Ações Rápidas</h3>
+                    <div class="actions-grid">
+                        <button class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <span>Novo Projeto</span>
+                        </button>
+                        <button class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <span>Adicionar Usuário</span>
+                        </button>
+                        <button class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <span>Gerar Relatório</span>
+                        </button>
+                        <button class="action-card">
+                            <div class="action-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <span>Configurar Alertas</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Activity & Projects -->
+                <div class="dashboard-grid">
+                    <div class="activity-section">
+                        <div class="section-title">
+                            <h3>Atividade Recente</h3>
+                            <a href="#" class="view-all">Ver Todas</a>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item">
+                                <div class="activity-icon success">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Novo usuário registrado</div>
+                                    <div class="activity-desc">Maria Santos foi adicionada ao projeto Marketing</div>
+                                    <div class="activity-time">Há 5 minutos</div>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon primary">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Projeto concluído</div>
+                                    <div class="activity-desc">Website da empresa foi finalizado com sucesso</div>
+                                    <div class="activity-time">Há 2 horas</div>
+                                </div>
+                            </div>
+
+                            <div class="activity-item">
+                                <div class="activity-icon warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Alerta de sistema</div>
+                                    <div class="activity-desc">Uso de CPU atingiu 85%</div>
+                                    <div class="activity-time">Há 4 horas</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="projects-overview">
+                        <div class="section-title">
+                            <h3>Projetos em Destaque</h3>
+                            <a href="#" class="view-all">Ver Todos</a>
+                        </div>
+                        <div class="projects-list">
+                            <div class="project-item">
+                                <div class="project-info">
+                                    <h4>Website Corporativo</h4>
+                                    <p>Redesign completo do website</p>
+                                </div>
+                                <div class="project-status completed">100%</div>
+                            </div>
+                            <div class="project-item">
+                                <div class="project-info">
+                                    <h4>App Mobile</h4>
+                                    <p>Desenvolvimento iOS/Android</p>
+                                </div>
+                                <div class="project-status in-progress">65%</div>
+                            </div>
+                            <div class="project-item">
+                                <div class="project-info">
+                                    <h4>E-commerce</h4>
+                                    <p>Plataforma de vendas</p>
+                                </div>
+                                <div class="project-status planning">25%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analytics Section -->
+            <section id="analytics" class="content-section">
+                <div class="section-header">
+                    <h1>Analytics & Métricas</h1>
+                    <p>Análises detalhadas do seu sistema</p>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Tráfego Mensal</h3>
+                            <div class="chart-actions">
+                                <button class="chart-btn active">7D</button>
+                                <button class="chart-btn">30D</button>
+                                <button class="chart-btn">90D</button>
+                            </div>
+                        </div>
+                        <div class="chart-content">
+                            <div class="chart-placeholder">
+                                <i class="fas fa-chart-area"></i>
+                                <p>Visualização de dados</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Conversões</h3>
+                            <div class="chart-actions">
+                                <button class="chart-btn active">Hoje</button>
+                                <button class="chart-btn">Semana</button>
+                            </div>
+                        </div>
+                        <div class="chart-content">
+                            <div class="chart-placeholder">
+                                <i class="fas fa-chart-pie"></i>
+                                <p>Taxa de conversão</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Performance</h3>
+                            <div class="chart-actions">
+                                <button class="chart-btn active">Real-time</button>
+                            </div>
+                        </div>
+                        <div class="chart-content">
+                            <div class="chart-placeholder">
+                                <i class="fas fa-chart-bar"></i>
+                                <p>Métricas de performance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="content-section">
+                <div class="section-header">
+                    <h1>Gestão de Projetos</h1>
+                    <p>Organize e acompanhe todos os seus projetos</p>
+                </div>
+
+                <div class="projects-grid">
+                    <div class="project-card completed">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <h3>Website Corporativo</h3>
+                                <span class="project-category">Design</span>
+                            </div>
+                            <div class="project-status-badge completed">Concluído</div>
+                        </div>
+                        <p class="project-description">Redesign completo do website da empresa com foco em UX/UI moderno</p>
+                        <div class="project-progress">
+                            <div class="progress-info">
+                                <span>Progresso</span>
+                                <span>100%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-team">
+                                <div class="team-avatars">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="Membro">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face" alt="Membro">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=32&h=32&fit=crop&crop=face" alt="Membro">
+                                </div>
+                                <span>+2 membros</span>
+                            </div>
+                            <div class="project-deadline">
+                                <i class="fas fa-calendar"></i>
+                                <span>Concluído em 15/08/2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card in-progress">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <h3>App Mobile</h3>
+                                <span class="project-category">Desenvolvimento</span>
+                            </div>
+                            <div class="project-status-badge in-progress">Em Progresso</div>
+                        </div>
+                        <p class="project-description">Desenvolvimento do aplicativo iOS e Android para clientes</p>
+                        <div class="project-progress">
+                            <div class="progress-info">
+                                <span>Progresso</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-team">
+                                <div class="team-avatars">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="Membro">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=32&h=32&fit=crop&crop=face" alt="Membro">
+                                </div>
+                                <span>+1 membro</span>
+                            </div>
+                            <div class="project-deadline">
+                                <i class="fas fa-calendar"></i>
+                                <span>Prazo: 30/09/2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card planning">
+                        <div class="project-header">
+                            <div class="project-title">
+                                <h3>E-commerce</h3>
+                                <span class="project-category">Plataforma</span>
+                            </div>
+                            <div class="project-status-badge planning">Planejamento</div>
+                        </div>
+                        <p class="project-description">Plataforma de vendas online com sistema de pagamentos</p>
+                        <div class="project-progress">
+                            <div class="progress-info">
+                                <span>Progresso</span>
+                                <span>25%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 25%"></div>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-team">
+                                <div class="team-avatars">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" alt="Membro">
+                                </div>
+                                <span>+3 membros</span>
+                            </div>
+                            <div class="project-deadline">
+                                <i class="fas fa-calendar"></i>
+                                <span>Início: 01/10/2024</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Team Section -->
+            <section id="team" class="content-section">
+                <div class="section-header">
+                    <h1>Nossa Equipe</h1>
+                    <p>Conheça os profissionais que fazem acontecer</p>
+                </div>
+
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-header">
+                            <div class="member-avatar">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=face" alt="João Silva">
+                            </div>
+                            <div class="member-status online"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3>João Silva</h3>
+                            <p class="member-role">Desenvolvedor Full-Stack</p>
+                            <div class="member-skills">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">Python</span>
+                            </div>
+                        </div>
+                        <div class="member-actions">
+                            <button class="btn-icon" title="Enviar mensagem">
+                                <i class="fas fa-envelope"></i>
+                            </button>
+                            <button class="btn-icon" title="Ver perfil">
+                                <i class="fas fa-user"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-header">
+                            <div class="member-avatar">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=120&h=120&fit=crop&crop=face" alt="Maria Santos">
+                            </div>
+                            <div class="member-status online"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3>Maria Santos</h3>
+                            <p class="member-role">Designer UX/UI</p>
+                            <div class="member-skills">
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">Adobe XD</span>
+                                <span class="skill-tag">Sketch</span>
+                            </div>
+                        </div>
+                        <div class="member-actions">
+                            <button class="btn-icon" title="Enviar mensagem">
+                                <i class="fas fa-envelope"></i>
+                            </button>
+                            <button class="btn-icon" title="Ver perfil">
+                                <i class="fas fa-user"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-header">
+                            <div class="member-avatar">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=120&h=120&fit=crop&crop=face" alt="Pedro Costa">
+                            </div>
+                            <div class="member-status offline"></div>
+                        </div>
+                        <div class="member-info">
+                            <h3>Pedro Costa</h3>
+                            <p class="member-role">Product Manager</p>
+                            <div class="member-skills">
+                                <span class="skill-tag">Scrum</span>
+                                <span class="skill-tag">Jira</span>
+                                <span class="skill-tag">Analytics</span>
+                            </div>
+                        </div>
+                        <div class="member-actions">
+                            <button class="btn-icon" title="Enviar mensagem">
+                                <i class="fas fa-envelope"></i>
+                            </button>
+                            <button class="btn-icon" title="Ver perfil">
+                                <i class="fas fa-user"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="content-section">
+                <div class="section-header">
+                    <h1>Configurações</h1>
+                    <p>Personalize seu sistema</p>
+                </div>
+
+                <div class="settings-grid">
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <h3>Preferências Gerais</h3>
+                            <p>Configure suas preferências básicas</p>
+                        </div>
+                        <div class="settings-content">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <label>Notificações Push</label>
+                                    <span>Receber notificações em tempo real</span>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <label>Modo Escuro</label>
+                                    <span>Ativar tema escuro</span>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="dark-mode-toggle">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <label>Idioma</label>
+                                    <span>Selecione o idioma preferido</span>
+                                </div>
+                                <select class="setting-select">
+                                    <option>Português</option>
+                                    <option>English</option>
+                                    <option>Español</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <div class="card-header">
+                            <h3>Segurança</h3>
+                            <p>Configure as opções de segurança</p>
+                        </div>
+                        <div class="settings-content">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <label>Autenticação 2FA</label>
+                                    <span>Dupla verificação de segurança</span>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <label>Login por Email</label>
+                                    <span>Permitir login via email</span>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <label>Senha</label>
+                                    <span>Alterar senha de acesso</span>
+                                </div>
+                                <button class="btn-secondary">Alterar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="./js/script.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeloAcademy Pro - Demonstração Profissional</title>
+    <link rel="stylesheet" href="./veloacademy/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-section h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero-section p {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .hero-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .hero-btn.primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .hero-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .hero-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .hero-btn.secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        .features-section {
+            padding: 80px 0;
+            background: var(--background-color);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--card-border);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+        }
+        
+        .feature-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .tech-section {
+            padding: 80px 0;
+            background: var(--card-bg);
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        
+        .tech-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--background-color);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .tech-item i {
+            font-size: 3rem;
+            color: var(--link-color);
+            margin-bottom: 20px;
+        }
+        
+        .tech-item h4 {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+        
+        .tech-item p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-btn {
+            padding: 18px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .cta-btn.primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .cta-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .cta-btn.secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        .stats-section-demo {
+            padding: 60px 0;
+            background: var(--background-color);
+        }
+        
+        .stats-grid-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .stat-item-demo {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--link-color);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-left">
+            <div class="logo-section">
+                <div class="logo">
+                    <i class='bx bx-book-bookmark'></i>
+                </div>
+                <div class="title-section">
+                    <h2>VeloAcademy Pro</h2>
+                    <p>Sistema Enterprise de Treinamento</p>
+                </div>
+            </div>
+            <div id="theme-toggle" style="cursor: pointer;">
+                <i class='bx bx-sun' style="font-size: 1.8rem; display: none;"></i>
+                <i class='bx bx-moon' style="font-size: 1.8rem;"></i>
+                <div style="font-size: 0.8rem; margin-top: 4px;">Trocar Tema</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>🚀 VeloAcademy Pro</h1>
+            <p>Sistema de Treinamento Corporativo de Nível Enterprise com Funcionalidades Avançadas, Analytics em Tempo Real e Interface Profissional</p>
+            <div class="hero-buttons">
+                <a href="./index.html" class="hero-btn primary">
+                    <i class='bx bx-rocket'></i>
+                    Testar Sistema
+                </a>
+                <a href="./veloacademy/README.md" class="hero-btn secondary">
+                    <i class='bx bx-book-open'></i>
+                    Documentação
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>✨ Funcionalidades Enterprise</h2>
+                <p>Sistema completo com recursos profissionais para treinamento corporativo</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class='bx bx-search-alt'></i>
+                    </div>
+                    <h3>Busca Inteligente</h3>
+                    <p>Sistema de busca avançada com filtros múltiplos, debounce automático e cache inteligente para performance otimizada</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class='bx bx-bar-chart-alt-2'></i>
+                    </div>
+                    <h3>Analytics Avançado</h3>
+                    <p>Rastreamento completo de métricas: visualizações, buscas, mudanças de tema e progresso dos usuários</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class='bx bx-notification'></i>
+                    </div>
+                    <h3>Sistema de Notificações</h3>
+                    <p>Notificações profissionais com tipos diferentes (sucesso, erro, aviso, info) e animações suaves</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class='bx bx-palette'></i>
+                    </div>
+                    <h3>Temas Personalizáveis</h3>
+                    <p>Alternância automática entre tema claro/escuro com persistência e contadores de uso</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class='bx bx-save'></i>
+                    </div>
+                    <h3>Persistência Inteligente</h3>
+                    <p>Salvamento automático de progresso, filtros personalizados e preferências do usuário</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class='bx bx-mobile-alt'></i>
+                    </div>
+                    <h3>Design Responsivo</h3>
+                    <p>Interface otimizada para todos os dispositivos com breakpoints inteligentes e mobile-first</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>🛠️ Stack Tecnológico</h2>
+                <p>Tecnologias modernas e padrões de desenvolvimento enterprise</p>
+            </div>
+            
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <i class='bx bxl-html5'></i>
+                    <h4>HTML5 Semântico</h4>
+                    <p>Estrutura acessível e bem organizada</p>
+                </div>
+                
+                <div class="tech-item">
+                    <i class='bx bxl-css3'></i>
+                    <h4>CSS3 Moderno</h4>
+                    <p>Grid, Flexbox e variáveis CSS</p>
+                </div>
+                
+                <div class="tech-item">
+                    <i class='bx bxl-javascript'></i>
+                    <h4>JavaScript ES6+</h4>
+                    <p>Funcionalidades interativas e modernas</p>
+                </div>
+                
+                <div class="tech-item">
+                    <i class='bx bx-data'></i>
+                    <h4>Cache Inteligente</h4>
+                    <p>Sistema de cache com expiração automática</p>
+                </div>
+                
+                <div class="tech-item">
+                    <i class='bx bx-storage'></i>
+                    <h4>LocalStorage</h4>
+                    <p>Persistência de dados no navegador</p>
+                </div>
+                
+                <div class="tech-item">
+                    <i class='bx bx-palette'></i>
+                    <h4>Design System</h4>
+                    <p>Variáveis CSS e componentes reutilizáveis</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section-demo">
+        <div class="container">
+            <div class="section-header">
+                <h2>📊 Estatísticas do Sistema</h2>
+                <p>Métricas e indicadores de performance</p>
+            </div>
+            
+            <div class="stats-grid-demo">
+                <div class="stat-item-demo">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Cursos Disponíveis</div>
+                </div>
+                
+                <div class="stat-item-demo">
+                    <div class="stat-number">8.250</div>
+                    <div class="stat-label">Alunos Matriculados</div>
+                </div>
+                
+                <div class="stat-item-demo">
+                    <div class="stat-number">4.7</div>
+                    <div class="stat-label">Avaliação Média</div>
+                </div>
+                
+                <div class="stat-item-demo">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Responsivo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>🎯 Pronto para Começar?</h2>
+            <p>Experimente o sistema mais avançado de treinamento corporativo do mercado</p>
+            <div class="cta-buttons">
+                <a href="./index.html" class="cta-btn primary">
+                    <i class='bx bx-rocket'></i>
+                    Acessar VeloAcademy Pro
+                </a>
+                <a href="./veloacademy/README.md" class="cta-btn secondary">
+                    <i class='bx bx-book-open'></i>
+                    Ver Documentação Completa
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-section">
+            <p>&copy; 2025 Velotax, VeloAcademy Pro. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="./veloacademy/config.js"></script>
+    <script>
+        // Script para alternar tema na página de demonstração
+        document.addEventListener("DOMContentLoaded", () => {
+            const themeToggle = document.getElementById("theme-toggle");
+            
+            function toggleTheme() {
+                document.body.classList.toggle("dark-theme");
+                const isDarkTheme = document.body.classList.contains("dark-theme");
+                document.querySelector(".bx-sun").style.display = isDarkTheme ? "block" : "none";
+                document.querySelector(".bx-moon").style.display = isDarkTheme ? "none" : "block";
+                localStorage.setItem("theme", isDarkTheme ? "dark" : "light");
+            }
+
+            // Aplica o tema salvo
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark") {
+                document.body.classList.add("dark-theme");
+                document.querySelector(".bx-sun").style.display = "block";
+                document.querySelector(".bx-moon").style.display = "none";
+            }
+
+            themeToggle.addEventListener("click", toggleTheme);
+            
+            // Animação de entrada para os cards
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Observar todos os cards
+            document.querySelectorAll('.feature-card, .tech-item, .stat-item-demo').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
